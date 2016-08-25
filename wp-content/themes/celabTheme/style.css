@@ -1,0 +1,98 @@
+/* Theme Name: Celab Thème URI: http://www.ce-labadille.com/ Description: Personalized thème for Celab by Pierre Labadille. Version: 0.1 Author: Pierre Labadille   Creation Theme by Pierre Labadille || http://www.pierrelabadille.com   */
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Lucida Sans";
+}
+
+body{
+    background-color: grey;
+}
+
+#page{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 1600px;
+    min-height: 100vh;
+}
+
+#header{
+    background-color: #E1E3E3;
+}
+#slogan{
+    padding: 70px 0 70px 100px;
+}
+h1{
+    font-size: xx-large;
+    font-weight: bolder;
+}
+#slogan p{
+    color: grey;
+}
+#slide img{
+    max-width: 100%;
+    height: auto;
+}
+#slide{
+    background-color: black;
+}
+
+#main{
+    flex:1;
+    display:flex;
+    flex-direction:row;
+}
+
+#content{
+    order:1;
+    width:80%;
+    padding:2% 5%;
+    background-color: #E1E3E3;
+}
+
+#sidebar{
+    order:2;
+    width:20%;
+    padding:2%;
+    background-color: #E1E3E3;
+}
+#sidebar ul{
+    list-style: none;
+}
+
+#footer{
+    background-color:#1a1a1a;
+    color: #e5f5fa;
+    text-align: center;
+}
+
+/* MENU PRINCIPAL */
+
+#menu-celabmenu{
+    background-color: #1a1a1a;
+    padding: 0 50px 0 50px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+#menu-celabmenu li{
+    color: #e5f5fa;
+    background-color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 10px;
+}
+#menu-celabmenu li a{ /* neutralisation des design liens */
+    text-decoration: none;
+    color: #e5f5fa;
+}
+
+#menu-celabmenu li:hover{
+    color: #1a1a1a;
+    background-color: #e5f5fa;
+    border: 1px solid #e5f5fa;
+}
+#menu-celabmenu li:hover a{
+    color: #1a1a1a;
+}
