@@ -21,8 +21,27 @@ body{
     background-color: #E1E3E3;
 }
 #slogan{
-    padding: 70px 0 70px 100px;
+    padding: 70px 0 20px 100px;
 }
+#sloganAlign{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#sloganAlign h2{
+    padding-left: 25px;
+}
+/* Affiché après 5 secondes et 10 secondes par du JS */
+#sloganAlign h2:first-of-type{
+    visibility: hidden;
+    color: #798531;
+}
+#sloganAlign h2:nth-of-type(2){
+    visibility: hidden;
+    color: grey;
+}
+
+
 h1{
     font-size: xx-large;
     font-weight: bolder;
@@ -76,14 +95,16 @@ h1{
     display: flex;
     flex-direction: row;
 }
+.sub-menu{
+    list-style: none;
+}
 #menu-celabmenu li{
     color: #e5f5fa;
     background-color: #1a1a1a;
-    border: 1px solid #1a1a1a;
-    border-radius: 8px;
     padding: 10px;
 }
-#menu-celabmenu li a{ /* neutralisation des design liens */
+
+#menu-celabmenu li a, .sub-menu li a { /* neutralisation des design liens */
     text-decoration: none;
     color: #e5f5fa;
 }
@@ -91,8 +112,38 @@ h1{
 #menu-celabmenu li:hover{
     color: #1a1a1a;
     background-color: #e5f5fa;
-    border: 1px solid #e5f5fa;
 }
 #menu-celabmenu li:hover a{
     color: #1a1a1a;
+}
+#menu-celabmenu li:hover ul li{
+    color: #e5f5fa;
+    background-color: #1a1a1a;
+}
+#menu-celabmenu li:hover ul li a{
+    color: #e5f5fa;
+}
+
+#menu-celabmenu li:hover ul li:hover{
+    color: #1a1a1a;
+    background-color: #e5f5fa;
+}
+#menu-celabmenu li:hover ul li:hover a{
+    color: #1a1a1a;
+}
+
+#menu-celabmenu ul{ /* On masque les sous menu sauf au survol des onglets */
+    position: absolute;
+    padding: 10px;
+    left: -999em;
+    text-align: left;
+    z-index: 1000;
+}
+#menu-celabmenu li:hover ul{
+    left: auto; /* On fait apparaitre les sous-menu */
+    margin-left: -10px; /* Correction 1 de placement car padding sur le parent */
+    padding:0;
+}
+#menu-celabmenu ul:first-of-type{
+    margin-top: 10px; /* Correction 2 de placement: on évite qu'il empiète sur le bas de l'onglet ouvrant */
 }
