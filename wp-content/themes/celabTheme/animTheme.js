@@ -26,9 +26,6 @@ clean(document);
 /* Script pour retarder l'affichage des sous-titres du header. */
 window.onload=function(){
     setTimeout(function(){
-        document.querySelector("#sloganAlign>h2:first-of-type").style.visibility ="visible";
+        document.querySelector("#subName").style.visibility ="visible";
     }, 5000);
-    setTimeout(function(){
-        document.querySelector("#sloganAlign>h2:nth-of-type(2)").style.visibility ="visible";
-    }, 10000);
 };

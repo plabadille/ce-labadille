@@ -20,42 +20,41 @@ body{
 #header{
     background-color: #E1E3E3;
 }
-#slogan{
-    padding: 70px 0 20px 100px;
-}
-#sloganAlign{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-#sloganAlign h2{
-    padding-left: 25px;
-}
-/* Affiché après 5 secondes et 10 secondes par du JS */
-#sloganAlign h2:first-of-type{
-    visibility: hidden;
-    color: #798531;
-}
-#sloganAlign h2:nth-of-type(2){
-    visibility: hidden;
-    color: grey;
-}
+    #sloganAlign{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+        #slogan{
+            padding: 70px 0 20px 100px;
+        }
+            h1{
+                font-size: xx-large;
+                font-weight: bolder;
+            }
+            #slogan p{
+                color: grey;
+            }
+        #subName{
+            visibility: hidden;
+            padding: 70px 0 20px 200px;
+        }
+            #subName h2{
+                font-size: xx-large;
+                font-weight: bolder;
+                color: #798531;
+            }
+            #subName p{
+                color: grey;
+            }
+    #slide{
+        background-color: black;
+    }
+        #slide img{
+            max-width: 100%;
+            height: auto;
+        }
 
-
-h1{
-    font-size: xx-large;
-    font-weight: bolder;
-}
-#slogan p{
-    color: grey;
-}
-#slide img{
-    max-width: 100%;
-    height: auto;
-}
-#slide{
-    background-color: black;
-}
 
 #main{
     flex:1;
