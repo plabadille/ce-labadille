@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     font-family: "Lucida Sans";
+    font-size: 18px;
 }
 
 body{
@@ -35,6 +36,17 @@ body{
             #slogan p{
                 color: grey;
             }
+    @media screen and (max-device-width: 930px) {
+        #slogan{
+            padding: 20px 100px 10px 5%;
+        }
+            h1{
+                font-size: 1.7em;
+            }
+            #slogan p{
+                font-size: 1em;
+            }
+    }
         #subName{
             visibility: hidden;
             padding: 70px 0 20px 200px;
@@ -47,6 +59,19 @@ body{
             #subName p{
                 color: grey;
             }
+    @media screen and (max-device-width: 930px) {
+        #subName{
+            padding: 20px 0 10px 10%;
+        }
+            #subName h2{
+                font-size: x-large;
+            }
+    }
+    @media screen and (max-device-width: 518px) {
+        #subName{
+            display: none;
+        }
+    }
     #slide{
         background-color: black;
     }
@@ -54,6 +79,76 @@ body{
             max-width: 100%;
             height: auto;
         }
+    #menu-celabmenu{
+        background-color: #1a1a1a;
+        padding: 0 50px 0 50px;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+    }
+        #menu-celabmenu li{
+            color: #e5f5fa;
+            background-color: #1a1a1a;
+            padding: 10px;
+        }
+        #menu-celabmenu li:hover{
+            color: #1a1a1a;
+            background-color: #e5f5fa;
+        }
+        #menu-celabmenu li:hover a{
+            color: #1a1a1a;
+        }
+        #menu-celabmenu li:hover ul li{
+            color: #e5f5fa;
+            background-color: #1a1a1a;
+        }
+        #menu-celabmenu li:hover ul li a{
+            color: #e5f5fa;
+        }
+        #menu-celabmenu li:hover ul li:hover{
+            color: #1a1a1a;
+            background-color: #e5f5fa;
+        }
+        #menu-celabmenu li:hover ul li:hover a{
+            color: #1a1a1a;
+        }
+        #menu-celabmenu ul{ /* On masque les sous menu sauf au survol des onglets */
+            position: absolute;
+            padding: 10px;
+            left: -999em;
+            text-align: left;
+            z-index: 1000;
+        }
+        #menu-celabmenu li:hover ul{
+            left: auto; /* On fait apparaitre les sous-menu */
+            margin-left: -10px; /* Correction 1 de placement car padding sur le parent */
+            padding:0;
+        }
+        #menu-celabmenu ul:first-of-type{
+            margin-top: 10px; /* Correction 2 de placement: on évite qu'il empiète sur le bas de l'onglet ouvrant */
+        }
+            .sub-menu{
+                list-style: none;
+            }
+            #menu-celabmenu li a, .sub-menu li a { /* neutralisation des design liens */
+                text-decoration: none;
+                color: #e5f5fa;
+            }
+    #responsive-menu-container{
+        border-right: 2px solid #212121;
+    }
+    /* Adaptabilité du menu si mobile (menu mobile non juste responsiv)*/
+    #mobileRez{
+        display: none;
+    }
+    @media screen and (max-device-width: 750px) {
+        #mobileRez{
+            display: block;
+        }
+        #normalRez{
+            display: none;
+        }
+    }
 
 
 #main{
@@ -65,7 +160,7 @@ body{
 #content{
     order:1;
     width:80%;
-    padding:2% 5%;
+    padding: 12px 5%;
     background-color: #E1E3E3;
 }
 
@@ -78,71 +173,32 @@ body{
 #sidebar ul{
     list-style: none;
 }
+@media screen and (max-device-width: 750px) {
+    #content{
+        width: 100%;
+        padding: 15px 1%;
+    }
+    #sidebar{
+        display: none;
+    }
+}
 
 #footer{
     background-color:#1a1a1a;
     color: #e5f5fa;
     text-align: center;
 }
-
-/* MENU PRINCIPAL */
-
-#menu-celabmenu{
-    background-color: #1a1a1a;
-    padding: 0 50px 0 50px;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-}
-.sub-menu{
-    list-style: none;
-}
-#menu-celabmenu li{
-    color: #e5f5fa;
-    background-color: #1a1a1a;
-    padding: 10px;
+    #footer a{
+        color: #e5f5fa;
+    }
+@media screen and (max-device-width: 750px) {
+    #footer p{
+        font-size: 0.8em;
+    }
+    #footer a{
+        font-size: 1em;
+    }
 }
 
-#menu-celabmenu li a, .sub-menu li a { /* neutralisation des design liens */
-    text-decoration: none;
-    color: #e5f5fa;
-}
 
-#menu-celabmenu li:hover{
-    color: #1a1a1a;
-    background-color: #e5f5fa;
-}
-#menu-celabmenu li:hover a{
-    color: #1a1a1a;
-}
-#menu-celabmenu li:hover ul li{
-    color: #e5f5fa;
-    background-color: #1a1a1a;
-}
-#menu-celabmenu li:hover ul li a{
-    color: #e5f5fa;
-}
 
-#menu-celabmenu li:hover ul li:hover{
-    color: #1a1a1a;
-    background-color: #e5f5fa;
-}
-#menu-celabmenu li:hover ul li:hover a{
-    color: #1a1a1a;
-}
-
-#menu-celabmenu ul{ /* On masque les sous menu sauf au survol des onglets */
-    position: absolute;
-    padding: 10px;
-    left: -999em;
-    text-align: left;
-    z-index: 1000;
-}
-#menu-celabmenu li:hover ul{
-    left: auto; /* On fait apparaitre les sous-menu */
-    margin-left: -10px; /* Correction 1 de placement car padding sur le parent */
-    padding:0;
-}
-#menu-celabmenu ul:first-of-type{
-    margin-top: 10px; /* Correction 2 de placement: on évite qu'il empiète sur le bas de l'onglet ouvrant */
-}

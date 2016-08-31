@@ -4,6 +4,7 @@
         <title><?php bloginfo('name') ?><?php if ( is_404() ) : ?> &raquo; <?php _e('Not Found') ?><?php elseif ( is_home() ) : ?> &raquo; <?php bloginfo('description') ?><?php else : ?><?php wp_title() ?><?php endif ?></title>
         <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
         <meta name="generator" content="WordPress <?php bloginfo('version'); ?>" /> <!-- leave this for stats -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
         <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/animTheme.js"></script>
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('rss2_url'); ?>" />
@@ -30,5 +31,10 @@
 	            </div>
             </header>
             <nav id="nav" role="navigation">
-	            <?php wp_nav_menu(array('theme_location' => 'header')); ?>
+                <div id="normalRez">
+	                <?php wp_nav_menu(array('theme_location' => 'header')); ?>
+                </div>
+                <div id="mobileRez">
+                    <?php echo do_shortcode('[responsive_menu]'); ?>
+                </div>
             </nav>
