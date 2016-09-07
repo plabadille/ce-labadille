@@ -27,7 +27,9 @@
                     </div>
 	            </div>
 	            <div id="slide">
-	                <img src="http://ce-labadille.com/wp-content/uploads/2016/08/slide-1.jpg" alt="imgPrez" />
+                    <?php
+                    echo do_shortcode("[metaslider id=11]");
+                    ?>
 	            </div>
             </header>
             <nav id="nav" role="navigation">
