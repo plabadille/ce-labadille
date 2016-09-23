@@ -28,9 +28,7 @@
                     </div>
 	            </div>
 	            <div id="slide">
-                    <?php
-                    echo do_shortcode("[metaslider id=11]");
-                    ?>
+                    <?php echo do_shortcode("[metaslider id=11]"); ?>
 	            </div>
             </header>
             <nav id="nav" role="navigation">

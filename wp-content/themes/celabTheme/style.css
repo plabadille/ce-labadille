@@ -167,11 +167,38 @@ body{
 #sidebar{
     order:2;
     width:20%;
+    min-width: 250px;
     padding:2%;
     background-color: #E1E3E3;
 }
 #sidebar ul{
     list-style: none;
+}
+
+#sidebar ul li{
+    padding-bottom: 20px;
+}
+
+#cartWoocommerce{
+    padding-top: 10px;
+}
+#cartWoocommerce .cart-contents{
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2px solid #f2f2f2;
+}
+#searchform div{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2px solid #f2f2f2;
+}
+
+#searchform div input{
+    margin: auto;
+    display: block;
 }
 @media screen and (max-device-width: 750px) {
     #content{
@@ -383,3 +410,42 @@ a img.aligncenter {
     .excerpt p{
         padding-left: 40px;
     }
+
+/* CORRECTION TEMPLATE DEFAULT WOOCOMMERCE */
+/* 1. En version mobile on affiche l'image après le titre et la description */
+@media screen and (max-device-width: 768px) {
+    .woocommerce div:first-of-type{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .woocommerce div:first-of-type .images{
+        order: 1;
+        max-width: 80%;
+        margin: auto;
+    }
+    .woocommerce div:first-of-type .entry-summary{
+        order: 2;
+    }
+}
+/* 2. On supprime les items marchands quand la reso est < à 750 (car le panier n'est plus affiché) */
+@media screen and (max-device-width: 768px) {
+    .cart, .add_to_cart_button, #newProduct, #starProduct{
+        display:none!important;
+    }
+}
+/* 3. On affiche pas la catégorie */
+.woocommerce div:first-of-type .product_meta{
+    display: none;
+}
+
+/* 4. correction des margin et padding */
+.woocommerce div.product form.cart{
+    padding-top: 2em;
+}
+.woocommerce div.product .product_title{
+    padding-bottom: 0.5em!important;
+}
+/* 5. Correction taille image plugin Product Carousels WooCommerce Addon utilisé dans la sidebar */
+.owl-item .product_item a img{
+    max-width: 50%;
+}

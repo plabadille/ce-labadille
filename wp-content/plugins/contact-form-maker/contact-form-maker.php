@@ -3,7 +3,7 @@
  * Plugin Name: Contact Form Maker
  * Plugin URI: http://web-dorado.com/products/form-maker-wordpress.html
  * Description: WordPress Contact Form Maker is a simple contact form builder, which allows the user with almost no knowledge of programming to create and edit different type of contact forms.
- * Version: 1.8.35
+ * Version: 1.8.36
  * Author: WebDorado
  * Author URI: http://web-dorado.com/
  * License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -248,7 +248,7 @@ function register_fmcemailverification_cpt(){
 // Activate plugin.
 function form_maker_activate_cfm() {
   $version = get_option("wd_form_maker_version");
-  $new_version = '1.8.35';
+  $new_version = '1.8.36';
   global $wpdb;
   if (!$version) {
 	add_option("wd_form_maker_version", $new_version, '', 'no');

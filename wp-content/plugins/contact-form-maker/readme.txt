@@ -4,7 +4,7 @@ Donate link: http://web-dorado.com/products/wordpress-contact-form-maker-plugin.
 Tags:  captcha, contact, contact form, contact forms, custom form, email, feedback, form, form builder, form manager, forms, survey
 Requires at least: 3.4
 Tested up to: 4.6
-Stable tag: 1.8.35
+Stable tag: 1.8.36
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,9 @@ If you want to update the plugin while preserving your existing contact forms, y
 8.  Contact Form Maker - Select Columns  
 
 == Changelog ==
+
+= 1.8.36 =
+* Changed: Featured Themes page   
 
 = 1.8.35 =
 * Fixed: Update from very old version   

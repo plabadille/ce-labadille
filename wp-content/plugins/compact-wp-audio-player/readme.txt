@@ -1,10 +1,10 @@
 === Compact WP Audio Player ===
 Contributors: Tips and Tricks HQ, mbrsolution
 Donate link: https://www.tipsandtricks-hq.com/development-center
-Tags: audio, audio player, embed, media, media player, mp3, mp3 player, music, music player, player, podcast, sound, ogg, wav,
+Tags: audio, audio player, embed, media, media player, mp3, mp3 player, music, music player, player, podcast, sound, ogg, wav
 Requires at least: 3.0
-Tested up to: 4.5
-Stable tag: 1.9.5
+Tested up to: 4.6
+Stable tag: 1.9.6
 License: GPLv2 or later
 
 A Compact WP Audio Player Pluign that is compatible with all major browsers and devices (Android, iPhone, iPad)
@@ -67,6 +67,10 @@ Yes
 None
 
 == Changelog ==
+
+= 1.9.6 =
+- Updated the audio player for iOS 10 safari.
+- WordPress 4.6 compatible.
 
 = 1.9.5 =
 - Bugfix - Audio player embedded with the "autoplay" flag (in the default template) wasn't changing the pause button icon to a play button icon after the audio file finished playing.
