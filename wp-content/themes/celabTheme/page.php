@@ -1,7 +1,18 @@
 <?php get_header(); ?> <!-- ouvrir header.php -->
 <main id="main">
 	<section id="content">
-	    <?php //loop wordpress
+        <?php
+            $homeUrl = get_option('home');
+            $currentPageTitle = wp_title('&raquo;', 0);
+        $ariane = <<<EOT
+        <aside id="ariane">
+            <p><a href="{$homeUrl}" alt="accueil">Home</a> {$currentPageTitle} </p>
+        </aside>
+EOT;
+       if (!is_front_page())
+           echo $ariane;
+
+	    //loop wordpress
 	    if (have_posts()) {
 	        while (have_posts()){
 	            the_post();
