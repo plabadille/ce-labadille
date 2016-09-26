@@ -16,7 +16,7 @@
             }
         }
         wp_reset_query(); //2nd loop pour afficher la catégorie
-        query_posts( 'category_name=chansonshumour&order=ASC' );
+        query_posts( 'category_name=chansonshumour&order=ASC&posts_per_page=-1' );
         if (have_posts()) {
             ?><h2 id="artDisp">Les articles disponibles:</h2><?php
             while (have_posts()){
