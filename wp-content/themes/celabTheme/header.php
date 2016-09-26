@@ -15,6 +15,10 @@
         <?php wp_head(); ?>   <?php wp_get_archives('type=monthly&format=link'); ?> <?php //comments_popup_script(); <?php wp_head(); ?>
     </head>
     <body>
+    <?php
+    if ($_GET['page_id'] && $_GET['page_id'] == '212') #redirection automatique de la page mon compte
+        header('Location: /');
+    ?>
         <div id="page">
             <header id="header">
                 <div id="sloganAlign">

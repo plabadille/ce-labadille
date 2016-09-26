@@ -2,6 +2,10 @@
 <main id="main">
 	<section id="content" class="woocommerce">
 	    <?php
+            if ($_GET['post_type']) #redirection automatique de la page boutique
+                if ($_GET['post_type'] == 'product')
+                    header('Location: /?page_id=2');
+
             global $post;
             $terms = get_the_terms( $post->ID, 'product_cat' );
             $productSlug = $terms['0']->slug; /* on ne s'intéresse qu'au premier puisque les pages n'affiche qu'une catégorie de produit */
