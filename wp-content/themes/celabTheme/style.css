@@ -1,15 +1,55 @@
 /* Theme Name: Celab Thème URI: http://www.ce-labadille.com/ Description: Personalized thème for Celab by Pierre Labadille. Version: 0.1 Author: Pierre Labadille   Creation Theme by Pierre Labadille || http://www.pierrelabadille.com   */
+
+/* ------------------------------------------------------------ */
+/* ------------------------ NAVIGATION ------------------------ */
+/* ------------------------------------------------------------ */
+/* 1. Global -------------------------------------------------- */
+/* 2. Architecture -------------------------------------------- */
+/* ---- 2.1. Conteneur général -------------------------------- */
+/* ---- 2.2. Header ------------------------------------------- */
+/* ---- 2.3. Menu (nav) --------------------------------------- */
+/* ---- 2.4. Main --------------------------------------------- */
+/* ---- 2.5. Footer ------------------------------------------- */
+/* 3. Contenu (sauf loop&plugin) ------------------------------ */
+/* 4. Contenu généré par WP ou WC Loop ------------------------ */
+/* ---- 4.1. Loop WP ------------------------------------------ */
+/* -------- 4.1.1. Page Wp ------------------------------------ */
+/* -------- 4.1.2. Article Wp --------------------------------- */
+/* ---- 4.2. Loop WC ------------------------------------------ */
+/* -------- 4.2.1. Présentation général du produit ------------ */
+/* -------- 4.2.2. Description détaillée et avis -------------- */
+/* -------- 4.2.3. Produits apparentés ------------------------ */
+/* 5. Plugin Mod (sauf WooCommerce) --------------------------- */
+/* ---- 5.1. Contact Form ------------------------------------- */
+/* ---- 5.2. Product Carousels WooCommerce Addon -------------- */
+/* 6. Classe CSS Requise par WordPress ------------------------ */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+/* 1. GLOBAL */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
 *{
     padding: 0;
     margin: 0;
     font-family: "Lucida Sans";
     font-size: 18px;
 }
-
 body{
     background-color: grey;
 }
+/* ------------------------------------------------------------ */
 
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+/* 2. ARCHITECTURE */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+
+/* 2.1 conteneur général */
 #page{
     display: flex;
     flex-direction: column;
@@ -17,7 +57,9 @@ body{
     max-width: 1600px;
     min-height: 100vh;
 }
+/* ------------------------------------------------------------ */
 
+/* 2.2 header */
 #header{
     background-color: #E1E3E3;
 }
@@ -79,127 +121,137 @@ body{
             max-width: 100%;
             height: auto;
         }
-    #menu-celabmenu{
+/* ------------------------------------------------------------ */
+
+/* 2.3 menu (nav) */
+#menu-celabmenu{
+    background-color: #1a1a1a;
+    padding: 0 50px 0 50px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+    #menu-celabmenu li{
+        color: #e5f5fa;
         background-color: #1a1a1a;
-        padding: 0 50px 0 50px;
-        list-style: none;
-        display: flex;
-        flex-direction: row;
+        padding: 10px;
     }
-        #menu-celabmenu li{
-            color: #e5f5fa;
-            background-color: #1a1a1a;
-            padding: 10px;
-        }
-        #menu-celabmenu li:hover{
-            color: #1a1a1a;
-            background-color: #e5f5fa;
-        }
-        #menu-celabmenu li:hover a{
-            color: #1a1a1a;
-        }
-        #menu-celabmenu li:hover ul li{
-            color: #e5f5fa;
-            background-color: #1a1a1a;
-        }
-        #menu-celabmenu li:hover ul li a{
-            color: #e5f5fa;
-        }
-        #menu-celabmenu li:hover ul li:hover{
-            color: #1a1a1a;
-            background-color: #e5f5fa;
-        }
-        #menu-celabmenu li:hover ul li:hover a{
-            color: #1a1a1a;
-        }
-        #menu-celabmenu ul{ /* On masque les sous menu sauf au survol des onglets */
-            position: absolute;
-            padding: 10px;
-            left: -999em;
-            text-align: left;
-            z-index: 1000;
-        }
-        #menu-celabmenu li:hover ul{
-            left: auto; /* On fait apparaitre les sous-menu */
-            margin-left: -10px; /* Correction 1 de placement car padding sur le parent */
-            padding:0;
-        }
-        #menu-celabmenu ul:first-of-type{
-            margin-top: 10px; /* Correction 2 de placement: on évite qu'il empiète sur le bas de l'onglet ouvrant */
-        }
-            .sub-menu{
-                list-style: none;
-            }
-            #menu-celabmenu li a, .sub-menu li a { /* neutralisation des design liens */
-                text-decoration: none;
-                color: #e5f5fa;
-            }
-    #responsive-menu-container{
-        border-right: 2px solid #212121;
+    #menu-celabmenu li:hover{
+        color: #1a1a1a;
+        background-color: #e5f5fa;
     }
-    /* Adaptabilité du menu si mobile (menu mobile non juste responsiv)*/
+    #menu-celabmenu li:hover a{
+        color: #1a1a1a;
+    }
+    #menu-celabmenu li:hover ul li{
+        color: #e5f5fa;
+        background-color: #1a1a1a;
+    }
+    #menu-celabmenu li:hover ul li a{
+        color: #e5f5fa;
+    }
+    #menu-celabmenu li:hover ul li:hover{
+        color: #1a1a1a;
+        background-color: #e5f5fa;
+    }
+    #menu-celabmenu li:hover ul li:hover a{
+        color: #1a1a1a;
+    }
+    #menu-celabmenu ul{ /* On masque les sous menu sauf au survol des onglets */
+        position: absolute;
+        padding: 10px;
+        left: -999em;
+        text-align: left;
+        z-index: 1000;
+    }
+    #menu-celabmenu li:hover ul{
+        left: auto; /* On fait apparaitre les sous-menu */
+        margin-left: -10px; /* Correction 1 de placement car padding sur le parent */
+        padding:0;
+    }
+    #menu-celabmenu ul:first-of-type{
+        margin-top: 10px; /* Correction 2 de placement: on évite qu'il empiète sur le bas de l'onglet ouvrant */
+    }
+        .sub-menu{
+            list-style: none;
+        }
+        #menu-celabmenu li a, .sub-menu li a { /* neutralisation des design liens */
+            text-decoration: none;
+            color: #e5f5fa;
+        }
+#responsive-menu-container{
+    border-right: 2px solid #212121;
+}
+/* Adaptabilité du menu si mobile (menu mobile non juste responsiv)*/
+#mobileRez{
+    display: none;
+}
+@media screen and (max-device-width: 1100px) and (max-device-height: 780px) {
     #mobileRez{
+        display: block;
+    }
+    #normalRez{
         display: none;
     }
-    @media screen and (max-device-width: 750px) {
-        #mobileRez{
-            display: block;
-        }
-        #normalRez{
-            display: none;
-        }
+}
+@media screen and (max-device-width: 780px) and (max-device-height: 1100px){
+    #mobileRez{
+        display: block;
     }
+    #normalRez{
+        display: none;
+    }
+}
+/* ------------------------------------------------------------ */
 
-
+/* 2.4- contenu principal (main) -> voir 3 pour le détail #content */
 #main{
     flex:1;
     display:flex;
     flex-direction:row;
 }
-
-#content{
-    order:1;
-    width:80%;
-    padding: 12px 5%;
-    background-color: #E1E3E3;
-}
-
-#sidebar{
-    order:2;
-    width:20%;
-    min-width: 250px;
-    padding:2%;
-    background-color: #E1E3E3;
-}
-#sidebar ul{
-    list-style: none;
-}
-
-#sidebar ul li{
-    padding-bottom: 20px;
-}
-
-#cartWoocommerce{
-    padding-top: 10px;
-}
-#cartWoocommerce .cart-contents{
-    display: block;
-    text-align: center;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 2px solid #f2f2f2;
-}
-#searchform div{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 2px solid #f2f2f2;
-}
-
-#searchform div input{
-    margin: auto;
-    display: block;
-}
+    #content{
+        order:1;
+        width:80%;
+        padding: 12px 5%;
+        background-color: #E1E3E3;
+    }
+        #ariane{
+            margin-bottom: 10px;
+        }
+    #sidebar{
+        order:2;
+        width:20%;
+        min-width: 250px;
+        padding:2%;
+        background-color: #E1E3E3;
+    }
+        #sidebar ul{
+            list-style: none;
+        }
+            #sidebar ul li{
+                padding-bottom: 20px;
+            }
+                #cartWoocommerce{
+                    padding-top: 10px;
+                }
+                    #cartWoocommerce .cart-contents{
+                        display: block;
+                        text-align: center;
+                        margin-bottom: 10px;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        border: 2px solid #f2f2f2;
+                    }
+                #searchform div{
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    border: 2px solid #f2f2f2;
+                }
+                    #searchform div input{
+                        margin: auto;
+                        display: block;
+                    }
 @media screen and (max-device-width: 750px) {
     #content{
         width: 100%;
@@ -209,7 +261,9 @@ body{
         display: none;
     }
 }
+/* ------------------------------------------------------------ */
 
+/* 2.5- Footer */
 #footer{
     background-color:#1a1a1a;
     color: #e5f5fa;
@@ -226,10 +280,196 @@ body{
         font-size: 1em;
     }
 }
+/* ------------------------------------------------------------ */
 
-/* CLASSE CSS REQUISE WP */
-/* =WordPress Core
--------------------------------------------------------------- */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+/* 3. Contenu (except loop) de #content */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+#introPage{
+    margin-bottom: 15px;
+}
+    #introPage h2:first-of-type{
+        font-size: 24pt;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    #introPage h3{
+        font-size: 18pt;
+        font-weight: bold;
+        text-align: left;
+        color:darkred;
+    }
+    #introPage .alignRight{
+        margin: 0 0 0 15px;
+    }
+@media screen and (max-device-width: 518px) {
+    #introPage img{
+        float: none;
+        display: block;
+        margin: auto;
+        margin-bottom: 8px;
+        width: 95%;
+        height: auto;
+    }
+}
+    #artDisp{
+        font-size: 24pt;
+        padding: 15px 0;
+    }
+    .excerpt{
+        margin-bottom: 10px;
+    }
+    .excerpt p{
+        padding-left: 40px;
+    }
+/* ------------------------------------------------------------ */
+
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+/* 4. GENERATED By LOOP WP or WC */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+
+/* 4.1 LOOP WORDPRESS */
+/* 4.1.1 page wp */
+.post_content h2{
+    margin-top: 10px;
+    font-size: 24pt;
+    color: #798531;
+    padding: 8px;
+}
+.post_content p{
+    line-height: 150%;
+    padding: 8px;
+}
+.post_content audio{
+    width: 30%!important;
+}
+/* ------------------------------------------------------------ */
+
+/* 4.1.2 article wp */
+.content .alignright{
+    margin: 0 0 0 15px;
+}
+.content audio{
+    width: 30%!important;
+}
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+
+/* 4.2 LOOP WOOCOMMERCE */
+/* 4.2.1 présentation générale du produit */
+.woocommerce div:first-of-type .product_meta{ /* On affiche pas la catégorie */
+    display: none;
+}
+.woocommerce div.product form.cart{ /* correction des margin et padding */
+    padding-top: 2em;
+}
+.woocommerce div.product .product_title{
+    padding-bottom: 0.5em!important;
+}
+.woocommerce div.product div.images img{ /* correction taille image produit */
+    width: 80%!important;
+    margin: auto;
+}
+@media screen and (max-device-width: 768px) { /* En version mobile on affiche l'image après le titre et la description */
+    .woocommerce div:first-of-type{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .woocommerce div:first-of-type .images{
+        order: 1;
+        max-width: 80%;
+        margin: auto;
+    }
+    .woocommerce div:first-of-type .entry-summary{
+        order: 2;
+    }
+}
+@media screen and (max-device-width: 768px) { /* En version mobile on n'affiche pas le bouton d'ajout au panier (non utilisé) */
+    .cart, .add_to_cart_button, #newProduct, #starProduct{
+        display:none!important;
+    }
+}
+/* ------------------------------------------------------------ */
+
+/* 4.2.2 description détaillée et avis */
+.reviews_tab{ /* on affiche pas les avis (on ne les utilise pas) */
+    display: none!important;
+}
+#tab-description h2{
+    margin-bottom: 20px;
+    color: #798531;
+}
+/* ------------------------------------------------------------ */
+
+/* 4.2.3 produits apparentés */
+.related.products{
+    border-top: 2px solid lightgrey;
+    padding-top: 20px;
+}
+.related.products h2{
+    margin-bottom: 20px;
+    color: #798531;
+}
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+/* 5. PLUGIN MOD (except WooCommerce) */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+
+/* 5.1 contact form */
+.form1 .wdform_page{
+    text-align: center;
+}
+.form1 .wdform_section{
+    padding: 15px;
+    border: 2px solid #f2f2f2;
+}
+.wdform_row:first-of-type .wdform-field:first-of-type{ /* position entête formulaire */
+    display: block!important;
+}
+.wdform_row:first-of-type{
+    text-align: center;
+    margin: auto;
+}
+.wdform_row:last-of-type .wdform-field:last-of-type{ /* position bouton du bas du formulaire */
+    display: block;
+}
+.wdform_row:last-of-type .wdform-field:last-of-type .wdform-element-section{
+    display: block!important;
+    margin: auto;
+}
+
+@media screen and (max-device-width: 518px) {
+    .form1 .wdform-page-and-images{
+        padding-left: 0!important;
+    }
+    .wdform-label-section{
+        width: 100%!important;
+    }
+}
+/* ------------------------------------------------------------ */
+
+/* 5.2 Product Carousels WooCommerce Addon (utilisé dans la sidebar) */
+.owl-item .product_item a img{
+    max-width: 50%;
+}
+/* ------------------------------------------------------------ */
+
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+/* 6. CLASSE CSS REQUISE WP */
+/* =WordPress Core */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+
 .alignnone {
     margin: 5px 20px 20px 0;
 }
@@ -338,114 +578,11 @@ a img.aligncenter {
 .display-posts-listing{
     margin: 20px auto 20px auto;
 }
-    .listing-item{ /* fix de position des images float WP */
-        clear:both;
-        margin: 20px auto 20px auto;
-    }
-    .listing-item .title:first-child{ /* On n'affiche pas les titres */
-        display:none;
-    }
-
-/* GENERATED SHORTCODE CSS */
-/* DESIGN PAGE WP */
-
-.post_content{
-
+.listing-item{ /* fix de position des images float WP */
+    clear:both;
+    margin: 20px auto 20px auto;
 }
-.post_content h2{
-    font-size: 24pt;
-    color: #798531;
-    padding: 8px;
+.listing-item .title:first-child{ /* On n'affiche pas les titres */
+    display:none;
 }
-.post_content p{
-    line-height: 150%;
-    padding: 8px;
-}
-.post_content audio{
-    width: 30%!important;
-}
-
-/* DESIGN ARTICLE WP */
-.content .alignright{
-    margin: 0 0 0 15px;
-}
-
-.content audio{
-    width: 30%!important;
-}
-
-/* TEMPLATE PAGE CSS*/
-#introPage{
-    margin-bottom: 15px;
-}
-    #introPage h2:first-of-type{
-        font-size: 24pt;
-        text-align: center;
-        margin-bottom: 15px;
-    }
-    #introPage h3{
-        font-size: 18pt;
-        font-weight: bold;
-        text-align: left;
-        color:darkred;
-    }
-    #introPage .alignRight{
-        margin: 0 0 0 15px;
-    }
-    @media screen and (max-device-width: 518px) {
-        #introPage img{
-            float: none;
-            display: block;
-            margin: auto;
-            margin-bottom: 8px;
-        }
-    }
-#artDisp{
-    font-size: 24pt;
-    padding: 15px 0;
-}
-.excerpt{
-    margin-bottom: 10px;
-}
-    .excerpt p{
-        padding-left: 40px;
-    }
-
-/* CORRECTION TEMPLATE DEFAULT WOOCOMMERCE */
-/* 1. En version mobile on affiche l'image après le titre et la description */
-@media screen and (max-device-width: 768px) {
-    .woocommerce div:first-of-type{
-        display: flex;
-        flex-direction: column-reverse;
-    }
-    .woocommerce div:first-of-type .images{
-        order: 1;
-        max-width: 80%;
-        margin: auto;
-    }
-    .woocommerce div:first-of-type .entry-summary{
-        order: 2;
-    }
-}
-/* 2. On supprime les items marchands quand la reso est < à 750 (car le panier n'est plus affiché) */
-@media screen and (max-device-width: 768px) {
-    .cart, .add_to_cart_button, #newProduct, #starProduct{
-        display:none!important;
-    }
-}
-/* 3. On affiche pas la catégorie */
-.woocommerce div:first-of-type .product_meta{
-    display: none;
-}
-
-/* 4. correction des margin et padding */
-.woocommerce div.product form.cart{
-    padding-top: 2em;
-}
-.woocommerce div.product .product_title{
-    padding-bottom: 0.5em!important;
-}
-/* 5. Correction taille image plugin Product Carousels WooCommerce Addon utilisé dans la sidebar */
-.owl-item .product_item a img{
-    max-width: 50%;
-}
+/* ------------------------------------------------------------ */
