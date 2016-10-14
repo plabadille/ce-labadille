@@ -1,4 +1,4 @@
-<?php /* TemplateName: Chansons d'humour */ ?>
+<?php /* TemplateName: Partitions Tabs */ ?>
 
 <?php get_header(); ?> <!-- ouvrir header.php -->
 <main id="main">
@@ -18,13 +18,13 @@
             }
         }
         wp_reset_query(); //2nd loop pour afficher la catégorie
-        query_posts( 'category_name=chansonshumour&order=ASC&posts_per_page=-1' );
+        query_posts( 'category_name=partitionstabs&order=ASC&posts_per_page=-1' );
         if (have_posts()) {
-            ?><h2 id="artDisp">Les articles disponibles:</h2><?php
+            ?><h2 id="artDisp">Les titres disponibles:</h2><?php
             while (have_posts()){
                 the_post();
                 ?><article class="excerpt" id="post-<?php the_ID(); ?>">
-                <h2><a href="<?php the_permalink(); ?>?categorie=chansons-humour" title="<?php the_title(); ?>"> <?php the_title(); ?></a></h2>
+                <h2><a href="<?php the_permalink(); ?>&categorie=partitionstabs" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
                 <div class="post_content">
                     <?php the_excerpt(); ?>
                 </div>

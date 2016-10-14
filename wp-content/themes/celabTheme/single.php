@@ -16,6 +16,11 @@
                     $parentUrl = get_permalink( get_post( '23' ) ); //on utilise l'id car le slug ne fonctionne pas pour un obscure raison pour cette page.
                     $parentTitle = get_the_title( get_post( '23' ) );
                     break;
+                case "partitionstabs":
+                    $exist = true;
+                    $parentUrl = get_permalink( get_post( '21' ) ); //on utilise l'id car le slug ne fonctionne pas pour un obscure raison pour cette page.
+                    $parentTitle = get_the_title( get_post( '21' ) );
+                    break;
                 default:
                     echo "Le fil d'ariane n'est pas encore paramétré pour cette catégorie, merci de prévenir un administrateur.";
                     break;
@@ -24,7 +29,7 @@
         if ($exist){
             ?>
             <aside id="ariane">
-                <p><a href="<?php echo get_option('home'); ?>" alt="accueil">Home</a> » <a href="<?php echo $parentUrl ?>" alt="<?php echo $parentTitle ?>"><?php echo $parentTitle ?></a> <?php wp_title(); ?> </p>
+                <p><a href="<?php echo get_option('home'); ?>" alt="accueil">Home</a> » <a href="<?php echo $parentUrl ?>" alt="<?php echo $parentTitle ?>"><?php echo $parentTitle ?></a> » <?php wp_title(); ?> </p>
             </aside>
         <?php } ?>
         <?php //loop wordpress

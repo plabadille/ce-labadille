@@ -8,7 +8,7 @@
                 $parentPageUrl = get_permalink( end( get_ancestors( get_the_ID(), 'page' ) ) );
                 $parentPageTitle = get_the_title( end( get_ancestors( get_the_ID(), 'page' ) ) );
             ?>
-            <p><a href="<?php echo get_option('home'); ?>" alt="accueil">Home</a> » <a href="<?php echo $parentPageUrl; ?>" alt="<?php echo $parentPageTitle; ?>"><?php echo $parentPageTitle; ?></a><?php wp_title(); ?> </p>
+            <p><a href="<?php echo get_option('home'); ?>" alt="accueil">Home</a> » <a href="<?php echo $parentPageUrl; ?>" alt="<?php echo $parentPageTitle; ?>"><?php echo $parentPageTitle; ?></a> » <?php wp_title(); ?> </p>
         </aside>
         <?php //loop wordpress
         if (have_posts()) {
@@ -21,7 +21,7 @@
                 </article> <?php
             }
         }
-        echo do_shortcode('[product_category category="editiondelinconnu" orderby="title"]');
+        echo do_shortcode('[product_category category="editiondelinconnu" orderby="title" per_page=-1]');
         ?>
     </section>
     <?php get_sidebar(); ?>

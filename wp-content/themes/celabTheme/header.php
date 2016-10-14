@@ -32,7 +32,11 @@
                     </div>
 	            </div>
 	            <div id="slide">
-                    <?php echo do_shortcode("[metaslider id=11]"); ?>
+                    <?php
+                        if (is_front_page()) {
+                            echo do_shortcode("[metaslider id=11]");
+                         } 
+                    ?>
 	            </div>
             </header>
             <nav id="nav" role="navigation">

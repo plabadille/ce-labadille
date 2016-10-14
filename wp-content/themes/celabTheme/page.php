@@ -6,7 +6,7 @@
             $currentPageTitle = wp_title('&raquo;', 0);
         $ariane = <<<EOT
         <aside id="ariane">
-            <p><a href="{$homeUrl}" alt="accueil">Home</a> {$currentPageTitle} </p>
+            <p><a href="{$homeUrl}" alt="accueil">Home</a> » {$currentPageTitle} </p>
         </aside>
 EOT;
        if (!is_front_page())
