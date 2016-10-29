@@ -48,3 +48,22 @@ function clean_posts_column( $columns ) {
     return $columns;
 }
 add_filter( 'manage_edit-post_columns', 'clean_posts_column', 10, 1 );
+
+//fonction donnant les liens de nos catégories perso
+function get_proper_category_url( $categorySlug ) {
+    switch ($categorySlug) {
+        case 'partitionstabs':
+            $categoryLink = "<a href=\"//ce-labadille.com/partitions-tabs\" alt=\"".$categorySlug."\">Partitions Tabs</a>";
+            break;
+        case 'auteurs':
+            $categoryLink = "<a href=\"//ce-labadille.com/artistes\" alt=\"".$categorySlug."\">Artistes</a>";
+            break;
+        case 'chansonshumour':
+            $categoryLink = "<a href=\"//ce-labadille.com/chansons-humour\" alt=\"".$categorySlug."\">Chansons d'humour</a>";
+            break;
+        case '':
+            $categoryLink = "<a href=\"//ce-labadille.com/sample-page\" alt=\"produits\">Produits</a>";
+            break;
+    }
+    return $categoryLink;
+}
