@@ -6,15 +6,25 @@ register_nav_menus(array(
 'mobileMenu' => 'Menu mobile principal (header)'
 ));
 
+//on indique que le theme supporte woo-commerce
 add_action( 'after_setup_theme', 'woocommerce_support' );
 function woocommerce_support() {
     add_theme_support( 'woocommerce' );
 }
-
+//return link of post with slug args
 function get_link_by_slug($slug, $type = 'post'){
     $post = get_page_by_path($slug, OBJECT, $type);
     return get_permalink($post->ID);
 }
+
+//custom search excluding pages:
+function SearchFilter($query) {
+    if ($query->is_search) {
+        $query->set('post_type', array('post','product'));
+    }
+    return $query;
+}
+add_filter('pre_get_posts','SearchFilter');
 
 remove_filter('the_content', 'wptexturize');
 
@@ -24,7 +34,7 @@ function remove_menu_pages() {
     remove_menu_page('users.php'); //utilisateurs
     remove_menu_page('themes.php'); //apparence
     remove_menu_page('edit-comments.php'); // commentaires
-    //remove_menu_page('manage_fmc'); //plugin ContactFormMaker
+    remove_menu_page('manage_fmc'); //plugin ContactFormMaker
     remove_menu_page('edit.php?post_type=cfmemailverification'); //emailVerif ContactForm
     remove_menu_page('wpc-page-setting'); //plugin wooCarousel
     remove_menu_page('aps-social'); //plugin boutonsocial

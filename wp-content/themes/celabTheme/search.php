@@ -5,9 +5,28 @@
         if (have_posts()) {
             while (have_posts()){
                 the_post();
+                $categorySlug = get_the_category()[0]->slug;
+                switch ($categorySlug) {
+                    case 'partitionstabs':
+                        $categoryLink = "<a href=\"//ce-labadille.com/partitions-tabs\" alt=\"".$categorySlug."\">" . $categorySlug . "</a>";
+                        $spec = "?categorie=partitionstabs";
+                        break;
+                    case 'auteurs':
+                        $categoryLink = "<a href=\"//ce-labadille.com/artistes\" alt=\"".$categorySlug."\">" . $categorySlug . "</a>";
+                        $spec = "?categorie=artistes";
+                        break;
+                    case 'chansonshumour':
+                        $categoryLink = "<a href=\"//ce-labadille.com/chansons-humour\" alt=\"".$categorySlug."\">" . $categorySlug . "</a>";
+                        $spec = "?categorie=chansons-humour";
+                        break;
+                    case '':
+                        $categoryLink = "<a href=\"//ce-labadille.com/sample-page\" alt=\"produits\">Produits</a>";
+                        $spec = "";
+                        break;
+                }
                 ?><article class="post" id="post-<?php the_ID(); ?>">
-                <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
-                <p class="postmetadata">   <?php the_time('j F Y') ?> par <?php the_author() ?> | Cat&eacute;gorie: <?php the_category(', ') ?> | <?php comments_popup_link('Pas de commentaires', '1 Commentaire', '% Commentaires'); ?> <?php edit_post_link('Editer', ' &#124; ', ''); ?>   </p>
+                <h2><a href="<?php the_permalink(); ?><?php echo $spec ;?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
+                <p class="postmetadata">Cat&eacute;gorie: <?php echo $categoryLink; ?> </p>
                 <div class="post_content">
                     <?php the_excerpt(); ?>
                 </div>
