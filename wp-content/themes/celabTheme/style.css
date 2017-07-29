@@ -321,25 +321,9 @@ body{
     }
     .excerpt{
         margin-bottom: 10px;
-        padding-bottom: 5px;
-        border-bottom: 1px solid grey;
     }
     .excerpt p{
         padding-left: 40px;
-    }
-    .excerpt:last-of-type {
-        border-bottom: 0px;
-    }
-    article.post:not(#introPage):first-of-type{
-        margin-top: 20px;
-    }
-    article.post:not(#introPage){
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        border-bottom: 1px solid grey;
-    }
-    article.post:not(#introPage):last-of-type {
-        border-bottom: 0px;
     }
 /* ------------------------------------------------------------ */
 
