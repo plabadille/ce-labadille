@@ -1,9 +1,10 @@
 <?php
 defined('ABSPATH') or die("No script kiddies please!");
 global $wpdb;
-$si_id = sanitize_text_field($_GET['si_id']);
+$si_id = intval(sanitize_text_field($_GET['si_id']));
 $table_name = $table_name = $wpdb->prefix . "aps_social_icons";
 $icon_sets = $wpdb->get_results("SELECT * FROM $table_name where si_id = $si_id");
+if(!empty($icon_sets)){
 $icon_set = $icon_sets[0];
 //$this->print_array($icon_set);
 /**
@@ -57,6 +58,9 @@ array(
         '%s' 
 	)
  );
- $_SESSION['aps_message'] = __('Icon Set Copied Successfully','accesspress-social-icons');
- wp_redirect(admin_url().'admin.php?page=aps-social');   
+ //$_SESSION['aps_message'] = __('Icon Set Copied Successfully','accesspress-social-icons');
+ wp_redirect(admin_url().'admin.php?page=aps-social&message=2');   
  exit;
+ }else{
+   die(__('No icons found for this icon id','accesspress-social-icons')); 
+ }

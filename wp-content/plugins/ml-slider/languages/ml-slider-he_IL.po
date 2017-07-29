@@ -104,10 +104,10 @@ msgid "Slides"
 msgstr "תמונות"
 
 # $goPro = "<div style='display: none;' id='screen-options-link-wrap'><a target='_blank' class='show-settings' href='{$link}'>Meta Slider v" . METASLIDER_VERSION . " - " .
-# __( 'Upgrade to Pro $19', "metaslider" ) .
+# __( 'Upgrade to Pro $39', "metaslider" ) .
 # "</a></div>";
 # wpml-name: 6cc60379c4000862e626d36dced83abc
-msgid "Upgrade to Pro $19"
+msgid "Upgrade to Pro $39"
 msgstr "שדרוג"
 
 # if ( function_exists( 'is_plugin_active' ) && ! is_plugin_active( 'ml-slider-pro/ml-slider-pro.php' ) ) {

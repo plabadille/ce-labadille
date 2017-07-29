@@ -580,8 +580,8 @@ msgid "Go Pro"
 msgstr "Atualizar para PRO"
 
 #: ../ml-slider.php:1684
-msgid "Upgrade to Pro $19"
-msgstr "Atualize para Pro US$19"
+msgid "Upgrade to Pro $39"
+msgstr "Atualize para Pro US$39"
 
 #: ../inc/metaslider.widget.class.php:18
 msgid "Meta Slider"

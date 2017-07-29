@@ -66,8 +66,8 @@ msgid ""
 msgstr "注意：此功能僅適用於高級開發。"
 
 #: ../ml-slider.php:278
-msgid "Upgrade to Pro $19"
-msgstr "升級到專業版只需$19"
+msgid "Upgrade to Pro $39"
+msgstr "升級到專業版只需$39"
 
 #: ../ml-slider.php:294
 msgid "Documentation"

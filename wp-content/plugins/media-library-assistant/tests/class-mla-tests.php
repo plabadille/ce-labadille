@@ -57,30 +57,6 @@ class MLATest {
 		 * This is the earliest effective place to localize values in other plugin components
 		 */
 		MLACoreOptions::mla_localize_option_definitions_array();
-		
-		if ( class_exists( 'MLASettings' ) ) {
-			MLASettings::mla_localize_tablist();
-		}
-		
-		if ( class_exists( 'MLAQuery' ) ) {
-			MLAQuery::mla_localize_default_columns_array();
-		}
-		
-		if ( class_exists( 'MLA_View_List_Table' ) ) {
-			MLA_View_List_Table::mla_localize_default_columns_array();
-		}
-		
-		if ( class_exists( 'MLA_Upload_List_Table' ) ) {
-			MLA_Upload_List_Table::mla_localize_default_columns_array();
-		}
-		
-		if ( class_exists( 'MLA_Upload_Optional_List_Table' ) ) {
-			MLA_Upload_Optional_List_Table::mla_localize_default_columns_array();
-		}
-		
-		if ( class_exists( 'MLA_Example_List_Table' ) ) {
-			MLA_Example_List_Table::mla_localize_default_columns_array();
-		}
 	}
 
 	/**

@@ -1,6 +1,6 @@
 <?php
 /**
- * Media Library Assistant WPML Support classes
+ * Media Library Assistant WPML Support classes, admin mode.
  *
  * This file is conditionally loaded in MLA::initialize after a check for WPML presence.
  *
@@ -9,8 +9,8 @@
  */
 
 /**
- * Class MLA (Media Library Assistant) WPML provides support for the WPML Multilingual CMS
- * family of plugins, including WPML Media
+ * Class MLA (Media Library Assistant) WPML provides admin mode support for the
+ * WPML Multilingual CMS family of plugins, including WPML Media
  *
  * @package Media Library Assistant
  * @since 2.11
@@ -27,15 +27,9 @@ class MLA_WPML {
 	 */
 	public static function initialize() {
 		/*
-		 * The remaining filters are only useful for the admin section; exit in the front-end posts/pages
+		 * These filters are only useful for the admin section; exit in the front-end posts/pages
 		 */
 		if ( ! is_admin() ) {
-			 /*
-			  * Defined in /media-library-assistant/includes/class-mla-shortcodes.php
-			  */
-			add_filter( 'mla_get_terms_query_arguments', 'MLA_WPML::mla_get_terms_query_arguments', 10, 1 );
-			add_filter( 'mla_get_terms_clauses', 'MLA_WPML::mla_get_terms_clauses', 10, 1 );
-
 			return;
 		}
 
@@ -100,67 +94,6 @@ class MLA_WPML {
 		add_action( 'wpml_media_create_duplicate_attachment', 'MLA_WPML::wpml_media_create_duplicate_attachment', 10, 2 );
 	}
 	
-	/**
-	 * MLA Tag Cloud Query Arguments
-	 *
-	 * Saves [mla_tag_cloud] query parameters for use in MLA_WPML::mla_get_terms_clauses.
-	 *
-	 * @since 2.11
-	 * @uses MLA_WPML::$all_query_parameters
-	 *
-	 * @param	array	shortcode arguments merged with attachment selection defaults, so every possible parameter is present
-	 *
-	 * @return	array	updated attachment query arguments
-	 */
-	public static function mla_get_terms_query_arguments( $all_query_parameters ) {
-		self::$all_query_parameters = $all_query_parameters;
-
-		return $all_query_parameters;
-	} // mla_get_terms_query_arguments
-
-	/**
-	 * Save the query arguments
-	 *
-	 * @since 2.11
-	 *
-	 * @var	array
-	 */
-	private static $all_query_parameters = array();
-
-	/**
-	 * MLA Tag Cloud Query Clauses
-	 *
-	 * Adds language-specific clauses to filter the cloud terms.
-	 *
-	 * @since 2.11
-	 *
-	 * @param	array	SQL clauses ( 'fields', 'join', 'where', 'order', 'orderby', 'limits' )
-	 *
-	 * @return	array	updated SQL clauses
-	 */
-	public static function mla_get_terms_clauses( $clauses ) {
-		global $wpdb, $sitepress;
-
-		if ( 'all' != ( $current_language = $sitepress->get_current_language() ) ) {
-			$clauses['join'] = preg_replace( '/(^.* AS tt ON t.term_id = tt.term_id)/m', '${1}' . ' JOIN `' . $wpdb->prefix . 'icl_translations` AS icl_t ON icl_t.element_id = tt.term_taxonomy_id', $clauses['join'] );
-
-			$clauses['where'] .= " AND icl_t.language_code = '" . $current_language . "'";
-
-			if ( is_string( $query_taxonomies = self::$all_query_parameters['taxonomy'] ) ) {
-				$query_taxonomies = array ( $query_taxonomies );
-			}
-
-			$taxonomies = array();
-			foreach ( $query_taxonomies as $taxonomy) {
-				$taxonomies[] = 'tax_' . $taxonomy;
-			}
-
-			$clauses['where'] .= "AND icl_t.element_type IN ( '" . join( "','", $taxonomies ) . "' )";
-		}
-
-		return $clauses;
-	} // mla_get_terms_clauses
-
 	/**
 	 * Add the plugin's admin-mode filter/action handlers
 	 *
@@ -890,8 +823,10 @@ class MLA_WPML {
 
 		/*
 		 * Find all assigned terms and build term_master array
-		 */		
+		 */
+		$current_language = $sitepress->get_current_language();
 		foreach ( $translations as $language_code => $translation ) {
+			$sitepress->switch_lang( $language_code, true );
 			foreach ( $taxonomies as $taxonomy_name ) {
 				if ( $terms = get_the_terms( $translation['element_id'], $taxonomy_name ) ) {
 					foreach ( $terms as $term ) {
@@ -913,10 +848,12 @@ class MLA_WPML {
 					continue;
 				}
 
+				$sitepress->switch_lang( $translation->language_code, true );
 				$term_object = get_term_by( 'term_taxonomy_id', $translation->element_id, $term['term']->taxonomy );
 				self::_add_relevant_term( $term_object, $term['translations'] );
 			} // translation
 		} // term
+		$sitepress->switch_lang( $current_language, true );
 
 		MLACore::mla_debug_add( __LINE__ . " MLA_WPML::_build_existing_terms( {$post_id} ) self::\$existing_terms = " . var_export( self::$existing_terms, true ), MLACore::MLA_DEBUG_CATEGORY_AJAX );
 		MLACore::mla_debug_add( __LINE__ . " MLA_WPML::_build_existing_terms( {$post_id} ) self::\$relevant_terms = " . var_export( self::$relevant_terms, true ), MLACore::MLA_DEBUG_CATEGORY_AJAX );
@@ -1301,6 +1238,8 @@ class MLA_WPML {
 	 * @return	array	$tax_inputs for Term Synchronization
 	 */
 	private static function _apply_term_synchronization( $post_id ) {
+		global $sitepress;
+
 		if ( 'checked' == MLACore::mla_get_option( 'term_synchronization', false, false, MLA_WPML::$mla_language_option_definitions ) ) {
 
 			/*
@@ -1309,6 +1248,7 @@ class MLA_WPML {
 			$terms_before = self::_update_existing_terms( $post_id );
 
 			// $tax_input is a convenient source of language codes; ignore $tax_inputs
+			$current_language = $sitepress->get_current_language();
 			foreach( self::$tax_input as $language => $tax_inputs ) {
 				/*
 				 * Skip the language we've already updated
@@ -1317,12 +1257,14 @@ class MLA_WPML {
 					continue;
 				}
 
+				$sitepress->switch_lang( $language, true );
 				$tax_inputs = self::_apply_synch_input( $language );
 				if ( ! empty( $tax_inputs ) ) {
 					$translation = self::$existing_terms[ $language ]['element_id'];
 					MLAData::mla_update_single_item( $translation, array(), $tax_inputs );
 				}
 			} // translation
+			$sitepress->switch_lang( $current_language, true );
 		} // do synchronization
 	}
 
@@ -2284,7 +2226,7 @@ class MLA_WPML_Table {
 					$link = add_query_arg( $args, wp_nonce_url( 'upload.php', MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) );
 				}
 
-				$link = apply_filters( 'wpml_link_to_translation', $link, false, $language['code'] );
+				$link = apply_filters( 'wpml_link_to_translation', $link, false, $language['code'], $trid );
 				$content .= '<a href="' . $link . '" title="' . $alt . '">';
 				$content .= '<img style="padding:1px;margin:2px;" border="0" src="' . ICL_PLUGIN_URL . '/res/img/' . $img . '" alt="' . $alt . '" width="16" height="16" />';
 				$content .= '</a>';

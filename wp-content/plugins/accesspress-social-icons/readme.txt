@@ -3,8 +3,8 @@ Contributors: Access Keys
 Tags: social icon, social icons, social media, social icon widget, social icons widget, social media icons, social media plugin, social networking, social profiles, wordpress social icons, wp social icons
 Donate link: http://accesspressthemes.com/donation/
 Requires at least: 4.0
-Tested up to: 4.6
-Stable tag: 1.6.1
+Tested up to: 4.7
+Stable tag: 1.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,6 +14,8 @@ Add social media icons on your site | select from pre-designed sets or upload yo
 [Homepage](https://accesspressthemes.com) | [Demo](http://demo.accesspressthemes.com/wordpress-plugins/accesspress-social-icons/) | [Documentation](https://accesspressthemes.com/documentation/documentationplugin-instruction-accesspress-social-icons/) | [Suppport](https://accesspressthemes.com/support) | [Premium Version](http://accesspressthemes.com/wordpress-plugins/accesspress-social-icons-pro/)
 
 ### Link-up your social profiles right from your website, in an easy and fun way! ### 
+
+Tested with WordPress 4.7
 
 <strong>AccessPress Social Icons</strong> - allows you to create various social icons and link your social profiles from your website. Its fun because - you can create, customize and build the beautiful icons for your social media profiles on your own. 
 
@@ -133,6 +135,28 @@ Once you install the plugin , you can check some general documentation about how
 4. Backend Lcon Sets Listing 
 
 == Changelog ==
+= 1.6.8 = 
+* Fixed some security issues
+* Removed session messages
+
+= 1.6.7 = 
+* Fixed XSS vulnerability for icon edit page 
+
+= 1.6.6 = 
+* Adjusted dynamic width assignment for icons 
+
+= 1.6.5 = 
+* Code Cleanup for plugin's main file 
+
+= 1.6.4 = 
+* Fixed small bug regarding the update successful message
+
+= 1.6.3 = 
+* Declared constants using method of the main plugin's class 
+
+= 1.6.2 = 
+* Done small modification in backend message display
+
 = 1.6.1 = 
 * Removed session from backend 
 
@@ -328,4 +352,6 @@ Added apsi_icon_class filter for icon class
 * Plugin submitted to http://wordpress.org for review and approval
 
 == Upgrade Notice ==
+
+= 1.6.4 = 
 There is an update available for the AccessPress Social Icons .Please update to recieve new updates and bug fixes.

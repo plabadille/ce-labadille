@@ -25,6 +25,16 @@ class MLAQuery {
 	const MLA_ALT_TEXT_SUBQUERY = 'alt_text_subquery';
 
 	/**
+	 * Provides a unique value for the File Name "Search Media" subquery
+	 *
+	 * The subquery is used to filter the Media/Assistant submenu table by
+	 * File Name with the Search Media text box.
+	 *
+	 * @since 0.40
+	 */
+	const MLA_FILE_SUBQUERY = 'file_subquery';
+
+	/**
 	 * Provides a unique suffix for the custom field "orderby" subquery
 	 *
 	 * The subquery is used to sort the Media/Assistant submenu table on
@@ -42,7 +52,7 @@ class MLAQuery {
 	 *
 	 * @since 2.15
 	 */
-	const MLA_TABLE_VIEW_SUBQUERY = 'table_view_subquery';
+	const MLA_TABLE_VIEW_SUBQUERY = 'use_postmeta_view'; // see mla-custom-field-search-example.php
 
 	/**
 	 * WordPress version test for $wpdb->esc_like() Vs esc_sql()
@@ -61,9 +71,9 @@ class MLAQuery {
 	public static function initialize() {
 		self::$wp_4dot0_plus = version_compare( get_bloginfo('version'), '4.0', '>=' );
 
-		/*
-		 * Set up the Media/Assistant submenu table column definitions
-		 */
+		self::_localize_default_columns_array();
+
+		// Set up the Media/Assistant submenu table column definitions
 		$taxonomies = get_taxonomies( array ( 'show_ui' => true ), 'names' );
 
 		foreach ( $taxonomies as $tax_name ) {
@@ -159,46 +169,6 @@ class MLAQuery {
 		}
 	}
 
-	/**
-	 * Builds the $default_columns array with translated source texts.
-	 *
-	 * Called from MLATest::initialize because the $default_columns information
-	 * might be accessed from "front end" posts/pages.
-	 *
-	 * @since 1.71
-	 */
-	public static function mla_localize_default_columns_array( ) {
-		/*
-		 * Build the default columns array at runtime to accomodate calls to the
-		 * localization functions
-		 */
-		self::$default_columns = array(
-			'cb' => '<input type="checkbox" />', //Render a checkbox instead of text
-			'icon' => '',
-			'ID_parent' => esc_html( _x( 'ID/Parent', 'list_table_column', 'media-library-assistant' ) ),
-			'title_name' => esc_html( _x( 'Title/Name', 'list_table_column', 'media-library-assistant' ) ),
-			'post_title' => esc_html( _x( 'Title', 'list_table_column', 'media-library-assistant' ) ),
-			'post_name' => esc_html( _x( 'Name', 'list_table_column', 'media-library-assistant' ) ),
-			'parent' => esc_html( _x( 'Parent ID', 'list_table_column', 'media-library-assistant' ) ),
-			'menu_order' => esc_html( _x( 'Menu Order', 'list_table_column', 'media-library-assistant' ) ),
-			'featured' => esc_html( _x( 'Featured in', 'list_table_column', 'media-library-assistant' ) ),
-			'inserted' => esc_html( _x( 'Inserted in', 'list_table_column', 'media-library-assistant' ) ),
-			'galleries' => esc_html( _x( 'Gallery in', 'list_table_column', 'media-library-assistant' ) ),
-			'mla_galleries' => esc_html( _x( 'MLA Gallery in', 'list_table_column', 'media-library-assistant' ) ),
-			'alt_text' => esc_html( _x( 'ALT Text', 'list_table_column', 'media-library-assistant' ) ),
-			'caption' => esc_html( _x( 'Caption', 'list_table_column', 'media-library-assistant' ) ),
-			'description' => esc_html( _x( 'Description', 'list_table_column', 'media-library-assistant' ) ),
-			'post_mime_type' => esc_html( _x( 'MIME Type', 'list_table_column', 'media-library-assistant' ) ),
-			'file_url' => esc_html( _x( 'File URL', 'list_table_column', 'media-library-assistant' ) ),
-			'base_file' => esc_html( _x( 'Base File', 'list_table_column', 'media-library-assistant' ) ),
-			'date' => esc_html( _x( 'Date', 'list_table_column', 'media-library-assistant' ) ),
-			'modified' => esc_html( _x( 'Last Modified', 'list_table_column', 'media-library-assistant' ) ),
-			'author' => esc_html( _x( 'Author', 'list_table_column', 'media-library-assistant' ) ),
-			'attached_to' => esc_html( _x( 'Attached to', 'list_table_column', 'media-library-assistant' ) ),
-			// taxonomy and custom field columns added below
-		);
-	}
-
 	/*
 	 * The $default_columns, $default_hidden_columns, and $default_sortable_columns
 	 * arrays define the "Media/Assistant" table columns.
@@ -276,7 +246,7 @@ class MLAQuery {
 	 * for the column is DESC/Descending.
 	 *
 	 * Taxonomy and custom field columns are added to this array by
-	 * MLA_List_Table::mla_admin_init_action.
+	 * MLAQuery::initialize.
 	 *
 	 * @since 0.1
 	 *
@@ -303,9 +273,46 @@ class MLAQuery {
 		'modified' => array('post_modified',true),
 		'author' => array('post_author',false),
 		'attached_to' => array('post_parent',false),
-		// sortable taxonomy columns, if any, added by mla_admin_init_action
-		// sortable custom field columns, if any, added by mla_admin_init_action
+		// sortable taxonomy columns, if any, added by MLAQuery::initialize
+		// sortable custom field columns, if any, added by MLAQuery::initialize
         );
+
+	/**
+	 * Builds the $default_columns array with translated source texts.
+	 *
+	 * @since 1.71
+	 */
+	private static function _localize_default_columns_array( ) {
+		if ( empty( self::$default_columns ) ) {
+			// Build the default columns array at runtime to accomodate calls to the localization functions
+			self::$default_columns = array(
+				'cb' => '<input type="checkbox" />', //Render a checkbox instead of text
+				'icon' => '',
+				'ID_parent' => esc_html( _x( 'ID/Parent', 'list_table_column', 'media-library-assistant' ) ),
+				'title_name' => esc_html( _x( 'Title/Name', 'list_table_column', 'media-library-assistant' ) ),
+				'post_title' => esc_html( _x( 'Title', 'list_table_column', 'media-library-assistant' ) ),
+				'post_name' => esc_html( _x( 'Name', 'list_table_column', 'media-library-assistant' ) ),
+				'parent' => esc_html( _x( 'Parent ID', 'list_table_column', 'media-library-assistant' ) ),
+				'menu_order' => esc_html( _x( 'Menu Order', 'list_table_column', 'media-library-assistant' ) ),
+				'featured' => esc_html( _x( 'Featured in', 'list_table_column', 'media-library-assistant' ) ),
+				'inserted' => esc_html( _x( 'Inserted in', 'list_table_column', 'media-library-assistant' ) ),
+				'galleries' => esc_html( _x( 'Gallery in', 'list_table_column', 'media-library-assistant' ) ),
+				'mla_galleries' => esc_html( _x( 'MLA Gallery in', 'list_table_column', 'media-library-assistant' ) ),
+				'alt_text' => esc_html( _x( 'ALT Text', 'list_table_column', 'media-library-assistant' ) ),
+				'caption' => esc_html( _x( 'Caption', 'list_table_column', 'media-library-assistant' ) ),
+				'description' => esc_html( _x( 'Description', 'list_table_column', 'media-library-assistant' ) ),
+				'post_mime_type' => esc_html( _x( 'MIME Type', 'list_table_column', 'media-library-assistant' ) ),
+				'file_url' => esc_html( _x( 'File URL', 'list_table_column', 'media-library-assistant' ) ),
+				'base_file' => esc_html( _x( 'Base File', 'list_table_column', 'media-library-assistant' ) ),
+				'date' => esc_html( _x( 'Date', 'list_table_column', 'media-library-assistant' ) ),
+				'modified' => esc_html( _x( 'Last Modified', 'list_table_column', 'media-library-assistant' ) ),
+				'author' => esc_html( _x( 'Author', 'list_table_column', 'media-library-assistant' ) ),
+				'attached_to' => esc_html( _x( 'Attached to', 'list_table_column', 'media-library-assistant' ) ),
+				// taxonomy columns, if any, added by MLAQuery::initialize
+				// custom field columns, if any, added by MLAQuery::initialize
+			);
+		}
+	}
 
 	/**
 	 * Return the names and display values of the sortable columns
@@ -517,6 +524,7 @@ class MLAQuery {
 		$attached_file = NULL;
 		$results = array();
 		$post_meta = get_metadata( 'post', $post_id );
+
 		if ( is_array( $post_meta ) ) {
 			foreach ( $post_meta as $post_meta_key => $post_meta_value ) {
 				if ( empty( $post_meta_key ) ) {
@@ -607,8 +615,8 @@ class MLAQuery {
 	 * ['mla_terms_search']['radio_phrases'] => AND/OR
 	 * ['mla_terms_search']['radio_terms'] => AND/OR
 	 * ['s'] => numeric for ID/parent search
-	 * ['mla_search_fields'] => 'content', 'title', 'excerpt', 'alt-text', 'name', 'terms'
-	 * Note: 'alt-text' is not supported in [mla_gallery]
+	 * ['mla_search_fields'] => 'title', 'name', 'alt-text', 'excerpt', 'content', 'file' ,'terms'
+	 * Note: 'alt-text' and 'file' are not supported in [mla_gallery]
 	 * ['mla_search_connector'] => AND/OR
 	 * ['sentence'] => entire string must match as one "keyword"
 	 * ['exact'] => entire string must match entire field value
@@ -663,7 +671,7 @@ class MLAQuery {
 		 */
 		if ( ! is_array( $raw_request ) ) {
 			/* translators: 1: ERROR tag 2: function name 3: non-array value */
-			error_log( sprintf( _x( '%1$s: %2$s non-array "%3$s"', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), 'MLAQuery::_prepare_list_table_query', var_export( $raw_request, true ) ), 0 );
+			MLACore::mla_debug_add( sprintf( _x( '%1$s: %2$s non-array "%3$s"', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), 'MLAQuery::_prepare_list_table_query', var_export( $raw_request, true ) ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 			return NULL;
 		}
 
@@ -717,7 +725,8 @@ class MLAQuery {
 				case 'exact':
 				case 'mla-tax':
 				case 'mla-term':
-					$clean_request[ $key ] = sanitize_key( $value );
+//					$clean_request[ $key ] = sanitize_key( $value );
+					$clean_request[ $key ] = sanitize_title_for_query( $value );
 					break;
 				case 'orderby':
 					if ( in_array( $value, array( 'none', 'post__in' ) ) ) {
@@ -790,7 +799,6 @@ class MLAQuery {
 							$clean_request['mla-metakey'] = MLACore::mla_taxonomy_support('', 'metakey');
 							$clean_request['mla-metavalue'] = stripslashes( $value );
 						}
-//error_log( __LINE__ . ' _prepare_list_table_query clean_request = ' . var_export( $clean_request, true ), 0 );
 						
 						break;
 					}
@@ -879,7 +887,7 @@ class MLAQuery {
 		/*
 		 * Pass query and search parameters to the filters for _execute_list_table_query
 		 */
-		self::$query_parameters = array( 'use_alt_text_subquery' => false, 'use_postmeta_subquery' => false, 'use_orderby_subquery' => false, 'orderby' => $clean_request['orderby'], 'order' => $clean_request['order'] );
+		self::$query_parameters = array( self::MLA_ALT_TEXT_SUBQUERY => false, self::MLA_FILE_SUBQUERY => false, self::MLA_TABLE_VIEW_SUBQUERY => false, self::MLA_ORDERBY_SUBQUERY => false, 'orderby' => $clean_request['orderby'], 'order' => $clean_request['order'] );
 		self::$query_parameters['detached'] = isset( $clean_request['detached'] ) ? $clean_request['detached'] : NULL;
 		self::$search_parameters = array( 'debug' => 'none' );
 
@@ -888,7 +896,7 @@ class MLAQuery {
 		 * Matching a wildcard pattern requires mainpulating the WHERE clause, too
 		 */
 		if ( isset( $clean_request['meta_query']['key'] ) ) {
-			self::$query_parameters['use_postmeta_subquery'] = true;
+			self::$query_parameters[self::MLA_TABLE_VIEW_SUBQUERY] = true;
 			self::$query_parameters['postmeta_key'] = $clean_request['meta_query']['key'];
 			self::$query_parameters['postmeta_value'] = NULL;
 			unset( $clean_request['meta_query'] );
@@ -934,13 +942,17 @@ class MLAQuery {
 		 */
 		if ( isset( $clean_request['s'] ) ) {
 			self::$search_parameters['s'] = $clean_request['s'];
-			self::$search_parameters['mla_search_fields'] = apply_filters( 'mla_list_table_search_filter_fields', $clean_request['mla_search_fields'], array( 'content', 'title', 'excerpt', 'alt-text', 'name', 'terms' ) );
+			self::$search_parameters['mla_search_fields'] = apply_filters( 'mla_list_table_search_filter_fields', $clean_request['mla_search_fields'], array( 'title', 'name', 'alt-text', 'excerpt', 'content', 'file' ,'terms' ) );
 			self::$search_parameters['mla_search_connector'] = $clean_request['mla_search_connector'];
 			self::$search_parameters['sentence'] = isset( $clean_request['sentence'] );
 			self::$search_parameters['exact'] = isset( $clean_request['exact'] );
 
 			if ( in_array( 'alt-text', self::$search_parameters['mla_search_fields'] ) ) {
-				self::$query_parameters['use_alt_text_subquery'] = true;
+				self::$query_parameters[self::MLA_ALT_TEXT_SUBQUERY] = true;
+			}
+
+			if ( in_array( 'file', self::$search_parameters['mla_search_fields'] ) ) {
+				self::$query_parameters[self::MLA_FILE_SUBQUERY] = true;
 			}
 
 			if ( in_array( 'terms', self::$search_parameters['mla_search_fields'] ) ) {
@@ -961,7 +973,7 @@ class MLAQuery {
 		if ( 'c_' == substr( $clean_request['orderby'], 0, 2 ) ) {
 			$option_value = MLAQuery::mla_custom_field_option_value( $clean_request['orderby'] );
 			if ( isset( $option_value['name'] ) ) {
-				self::$query_parameters['use_orderby_subquery'] = true;
+				self::$query_parameters[self::MLA_ORDERBY_SUBQUERY] = true;
 				self::$query_parameters['orderby_key'] = $option_value['name'];
 
 				if ( isset($clean_request['orderby']) ) {
@@ -979,7 +991,7 @@ class MLAQuery {
 				 * so we'll handle it in the JOIN and ORDERBY filters
 				 */
 				case '_wp_attachment_image_alt':
-					self::$query_parameters['use_orderby_subquery'] = true;
+					self::$query_parameters[self::MLA_ORDERBY_SUBQUERY] = true;
 					self::$query_parameters['orderby_key'] = '_wp_attachment_image_alt';
 
 					if ( isset($clean_request['orderby']) ) {
@@ -1086,7 +1098,7 @@ class MLAQuery {
 		global $wpdb;
 		static $wpmf_pre_get_posts_priority = false, $wpmf_pre_get_posts1_priority = false;
 
-		add_filter( 'posts_search', 'MLAQuery::mla_query_posts_search_filter', 10, 2 ); // $search, &$this
+		add_filter( 'posts_search', 'MLAQuery::mla_query_posts_search_filter' );
 		add_filter( 'posts_where', 'MLAQuery::mla_query_posts_where_filter' );
 		add_filter( 'posts_join', 'MLAQuery::mla_query_posts_join_filter' );
 		add_filter( 'posts_groupby', 'MLAQuery::mla_query_posts_groupby_filter' );
@@ -1324,11 +1336,10 @@ class MLAQuery {
 	 * @since 0.60
 	 *
 	 * @param	string	query clause before modification
-	 * @param	object	WP_Query object
 	 *
 	 * @return	string	query clause after keyword search addition
 	 */
-	public static function mla_query_posts_search_filter( $search_string, &$query_object ) {
+	public static function mla_query_posts_search_filter( $search_string ) {
 		global $wpdb;
 
 		$numeric_clause = '';
@@ -1553,6 +1564,12 @@ class MLAQuery {
 						$inner_connector = ' OR ';
 					}
 
+					if ( in_array( 'file', $fields ) ) {
+						$view_name = self::MLA_FILE_SUBQUERY;
+						$inner_clause .= "{$inner_connector}({$view_name}.meta_value LIKE {$sql_term})";
+						$inner_connector = ' OR ';
+					}
+
 					if ( in_array( 'name', $fields ) ) {
 						$inner_clause .= "{$inner_connector}({$wpdb->posts}.post_name LIKE {$sql_term})";
 					}
@@ -1752,31 +1769,31 @@ class MLAQuery {
 		}
 
 		/*
-		 * ALT Text searches, custom field Table Views and custom field sorts are
-		 * special; we have to use a subquery to build an intermediate table and
+		 * ALT Text searches, File Name searches, custom field Table Views and custom field
+		 * sorts are special; we have to use a subquery to build an intermediate table and
 		 * modify the JOIN to include posts with no value for the metadata field.
-		 * Three clauses are used because all three conditions can be present at once.
+		 * Four clauses are used because all four conditions can be present at once.
 		 */
-		if ( self::$query_parameters['use_alt_text_subquery'] ) {
+		if ( self::$query_parameters[self::MLA_ALT_TEXT_SUBQUERY] ) {
 			$sub_query = sprintf( 'SELECT post_id, meta_value FROM %1$s WHERE %1$s.meta_key = \'%2$s\'', $wpdb->postmeta, '_wp_attachment_image_alt' );
 			$join_clause .= sprintf( ' LEFT JOIN ( %1$s ) %2$s ON (%3$s.ID = %2$s.post_id)', $sub_query, self::MLA_ALT_TEXT_SUBQUERY, $wpdb->posts );
 		}
 
-		if ( self::$query_parameters['use_postmeta_subquery'] ) {
+		if ( self::$query_parameters[self::MLA_FILE_SUBQUERY] ) {
+			$sub_query = sprintf( 'SELECT post_id, meta_value FROM %1$s WHERE %1$s.meta_key = \'%2$s\'', $wpdb->postmeta, '_wp_attached_file' );
+			$join_clause .= sprintf( ' LEFT JOIN ( %1$s ) %2$s ON (%3$s.ID = %2$s.post_id)', $sub_query, self::MLA_FILE_SUBQUERY, $wpdb->posts );
+		}
+
+		if ( self::$query_parameters[self::MLA_TABLE_VIEW_SUBQUERY] ) {
 			$sub_query = sprintf( 'SELECT post_id, meta_value FROM %1$s WHERE %1$s.meta_key = \'%2$s\'', $wpdb->postmeta, self::$query_parameters['postmeta_key'] );
 			$join_clause .= sprintf( ' LEFT JOIN ( %1$s ) %2$s ON (%3$s.ID = %2$s.post_id)', $sub_query, self::MLA_TABLE_VIEW_SUBQUERY, $wpdb->posts );
 		}
 
-		if ( self::$query_parameters['use_orderby_subquery'] ) {
+		if ( self::$query_parameters[self::MLA_ORDERBY_SUBQUERY] ) {
 			$sub_query = sprintf( 'SELECT post_id, meta_value FROM %1$s WHERE %1$s.meta_key = \'%2$s\'', $wpdb->postmeta, self::$query_parameters['orderby_key'] );
 			$join_clause .= sprintf( ' LEFT JOIN ( %1$s ) %2$s ON (%3$s.ID = %2$s.post_id)', $sub_query, self::MLA_ORDERBY_SUBQUERY, $wpdb->posts );
 		}
 
-		/*
-		 * Custom field sorts are special; we have to use a subquery to build
-		 * an intermediate table and modify the JOIN to include posts with
-		 * no value for this metadata field.
-		 */
 		if ( isset( self::$query_parameters['orderby'] ) ) {
 			if ( ( 'c_' == substr( self::$query_parameters['orderby'], 0, 2 ) ) || ( '_wp_attachment_image_alt' == self::$query_parameters['orderby'] ) ) {
 				$orderby = self::MLA_ORDERBY_SUBQUERY . '.meta_value';
@@ -1820,7 +1837,7 @@ class MLAQuery {
 	public static function mla_query_posts_groupby_filter( $groupby_clause ) {
 		global $wpdb;
 
-		if ( ( ! empty( self::$query_parameters['use_postmeta_subquery'] ) ) || ( ! empty( self::$query_parameters['use_alt_text_subquery'] ) ) || ( ! empty( self::$query_parameters['use_orderby_subquery'] ) ) || isset( self::$search_parameters['tax_terms_count'] ) ) {
+		if ( ( ! empty( self::$query_parameters[self::MLA_TABLE_VIEW_SUBQUERY] ) ) || ( ! empty( self::$query_parameters[self::MLA_ALT_TEXT_SUBQUERY] ) ) || ( ! empty( self::$query_parameters[self::MLA_FILE_SUBQUERY] ) ) || ( ! empty( self::$query_parameters[self::MLA_ORDERBY_SUBQUERY] ) ) || isset( self::$search_parameters['tax_terms_count'] ) ) {
 			$groupby_clause = "{$wpdb->posts}.ID";
 		}
 

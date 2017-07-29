@@ -335,6 +335,10 @@ div.mla_errors {
  * MLA Settings page
  */
 
+#donate-button-div {
+	margin-top: 5px;
+}
+
 #wpbody-content .optiontable th {
 	padding-left: 10px;
 }
@@ -345,9 +349,11 @@ div.mla_errors {
 	border-left: 1px solid
 }
 
-.mla-settings-after-table {
-	margin-right: 10px;
+.mla-settings-enable-form {
+	margin-right: 0px;
 	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom:thin solid #888888;
 }
 
 span.submit.mla-settings-submit,
@@ -377,6 +383,33 @@ ul.mla_settings {
 
 ul.mla_settings li { 
 	margin-right: 2em;
+}
+
+#mla-add-iptc-exif-table,
+#mla-add-custom-field-table {
+	margin-bottom: 15px;
+}
+
+#mla-add-iptc-exif-table th,
+#mla-add-custom-field-table th {
+	padding: 5px 0px 5px 5px;
+	width: 10px;
+}
+
+#mla-add-iptc-exif-table td,
+#mla-add-custom-field-table td {
+	padding: 5px 0px 5px 0px;
+}
+
+#mla-add-custom-field-toggle {
+	text-decoration:none;
+}
+
+#mla-add-iptc-exif-table input[type="text"],
+#mla-add-iptc-exif-table select,
+#mla-add-custom-field-table input[type="text"],
+#mla-add-custom-field-table select {
+	width: 100%;
 }
 
 /*

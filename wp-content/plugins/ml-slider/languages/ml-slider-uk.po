@@ -698,5 +698,5 @@ msgid "Go Pro"
 msgstr "Отримати Pro версію"
 
 #: ../ml-slider.php:1829
-msgid "Upgrade to Pro $19"
-msgstr "Оновити до Pro версії за $19"
+msgid "Upgrade to Pro $39"
+msgstr "Оновити до Pro версії за $39"

@@ -576,8 +576,8 @@ msgid "Go Pro"
 msgstr "Go Pro"
 
 #: ../ml-slider.php:1718
-msgid "Upgrade to Pro $19"
-msgstr "Upgrade auf Pro $19"
+msgid "Upgrade to Pro $39"
+msgstr "Upgrade auf Pro $39"
 
 #: ../inc/metaslider.widget.class.php:18
 msgid "Meta Slider"

@@ -68,8 +68,8 @@ msgstr ""
 "pewny co robisz, nie rób tego."
 
 #: ../ml-slider.php:278
-msgid "Upgrade to Pro $19"
-msgstr "Zaktualizuj do wersji Pro za $19"
+msgid "Upgrade to Pro $39"
+msgstr "Zaktualizuj do wersji Pro za $39"
 
 #: ../ml-slider.php:294
 msgid "Documentation"

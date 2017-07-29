@@ -4,50 +4,14 @@ defined('ABSPATH') or die("No script kiddies please!");
  * Plugin Name:AccessPress Social Icons
  * Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-icons/
  * Description: A plugin to add social icons in your site wherever you want dynamically with handful of configurable settings.
- * Version:1.6.1
+ * Version:1.6.8
  * Author:AccessPress Themes
  * Author URI:http://accesspressthemes.com/
  * Text Domain: accesspress-social-icons
  * Domain Path: /languages/
  * License:GPLv2 or later
  * */
-/**
- * Declartion of necessary constants for plugin
- * */
-if (!defined('APS_IMAGE_DIR')) {
-    define('APS_IMAGE_DIR', plugin_dir_url(__FILE__) . 'images');
-}
-if (!defined('APS_JS_DIR')) {
-    define('APS_JS_DIR', plugin_dir_url(__FILE__) . 'js');
-}
-if (!defined('APS_CSS_DIR')) {
-    define('APS_CSS_DIR', plugin_dir_url(__FILE__) . 'css');
-}
 
-/**
- * @since 1.5.3
- * 
- * */
- defined('APSI_PLUGIN_URL') or define('APSI_PLUGIN_URL',plugin_dir_url(__FILE__));
- 
-if (!defined('APS_ICONS_DIR')) {
-    /**
-     * apsi_icons_sets_directory filter
-     * 
-     * since @1.5.2
-     * 
-     * Can be hooked to change http to https
-     * 
-     * */
-    define('APS_ICONS_DIR', apply_filters('apsi_icon_sets_directory',plugin_dir_url(__FILE__) . 'icon-sets')); 
-}
-if (!defined('APS_LANG_DIR')) {
-    define('APS_LANG_DIR', basename( dirname( __FILE__ ) ) . '/languages');
-}
-if(!defined('APS_VERSION'))
-{
-    define('APS_VERSION','1.6.1');
-}
 /**
  * Register of widgets
  * */
@@ -59,6 +23,7 @@ if (!class_exists('APS_Class')) {
          * Initialization of plugin from constructor
          * */
         function __construct() {
+            $this->define_constants();
             register_activation_hook(__FILE__, array($this, 'plugin_activation')); //calls plugin activation function
             add_action('init', array($this, 'plugin_text_domain')); //loads text domain for translation ready
             add_action('wp_enqueue_scripts', array($this, 'register_frontend_assets'));//registers assets for frontend
@@ -76,6 +41,52 @@ if (!class_exists('APS_Class')) {
             add_action('widgets_init', array($this, 'register_aps_widget')); //register aps widget
             add_filter('apsi_image_url',array($this,'check_url'));
             
+        }
+        
+        /**
+         * Declartion of necessary constants for plugin
+         * 
+         * Previously declare outside the class
+         * 
+         * @since 1.6.3
+         * 
+         * */ 
+        function define_constants(){
+           
+            if (!defined('APS_IMAGE_DIR')) {
+                define('APS_IMAGE_DIR', plugin_dir_url(__FILE__) . 'images');
+            }
+            if (!defined('APS_JS_DIR')) {
+                define('APS_JS_DIR', plugin_dir_url(__FILE__) . 'js');
+            }
+            if (!defined('APS_CSS_DIR')) {
+                define('APS_CSS_DIR', plugin_dir_url(__FILE__) . 'css');
+            }
+            
+            /**
+             * @since 1.5.3
+             * 
+             * */
+             defined('APSI_PLUGIN_URL') or define('APSI_PLUGIN_URL',plugin_dir_url(__FILE__));
+             
+            if (!defined('APS_ICONS_DIR')) {
+                /**
+                 * apsi_icons_sets_directory filter
+                 * 
+                 * since @1.5.2
+                 * 
+                 * Can be hooked to change http to https
+                 * 
+                 * */
+                define('APS_ICONS_DIR', apply_filters('apsi_icon_sets_directory',plugin_dir_url(__FILE__) . 'icon-sets')); 
+            }
+            if (!defined('APS_LANG_DIR')) {
+                define('APS_LANG_DIR', basename( dirname( __FILE__ ) ) . '/languages');
+            }
+            if(!defined('APS_VERSION'))
+            {
+                define('APS_VERSION','1.6.8');
+            }
         }
 
         //called when plugin is activated
@@ -225,7 +236,7 @@ if (!class_exists('APS_Class')) {
         function aps_icon_list_action() {
             if (wp_verify_nonce($_POST['_wpnonce'], 'aps-ajax-nonce')) {
                 $plugin_path = plugin_dir_path(__FILE__);
-                //include_once('inc/backend/list-icon-sets.php');
+                
                 for ($i = 1; $i <= 12; $i++) {
                     $icon_set_image_array = array();
                     ?>
@@ -242,7 +253,7 @@ if (!class_exists('APS_Class')) {
                                     $icon_set_image_array[] = $file;
 
 
-                                    //echo '<img src="/'.$file.'" border="0" />';
+                                   
                                 }//if close
                             }//while close
                             if (count($icon_set_image_array) > 0) {

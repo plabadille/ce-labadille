@@ -600,5 +600,5 @@ msgid "Go Pro"
 msgstr "نسخه اصلی"
 
 #: ../ml-slider.php:1581
-msgid "Upgrade to Pro $19"
+msgid "Upgrade to Pro $39"
 msgstr "ارتقا به پرو با 19$"

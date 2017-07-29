@@ -737,8 +737,8 @@ msgstr "Получить Pro"
 
 #: ml-slider.php:1716
 #@ metaslider
-msgid "Upgrade to Pro $19"
-msgstr "Обновитесь до Pro за $19"
+msgid "Upgrade to Pro $39"
+msgstr "Обновитесь до Pro за $39"
 
 #: inc/slide/metaslide.class.php:116
 #@ metaslider

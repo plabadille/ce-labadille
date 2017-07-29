@@ -11,8 +11,14 @@
             <div class="aps-message aps-message-success updated">
                 <p>
                     <?php
-                    echo __('Icon Set Added Successfully','accesspress-social-icons');;
-                    
+                    if($_GET['message'] == 1){
+                        echo __('Icon Set Added Successfully','accesspress-social-icons');;    
+                    }else if($_GET['message'] == 2){
+                        echo __('Icon Set Copied Successfully','accesspress-social-icons');
+                    }else if($_GET['message'] == 3){
+                        echo __('Icon set deleted successfully.','accesspress-social-icons');
+                    }
+        
                     ?>
                 </p>
             </div>

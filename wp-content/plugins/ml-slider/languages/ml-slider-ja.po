@@ -626,8 +626,8 @@ msgid "Go Pro"
 msgstr "Pro 版へアップグレード"
 
 #: ../ml-slider.php:1581
-msgid "Upgrade to Pro $19"
-msgstr "$19でプロ版へアップグレード"
+msgid "Upgrade to Pro $39"
+msgstr "$39でプロ版へアップグレード"
 
 #~ msgid "Responsive"
 #~ msgstr "レシポンシブ"

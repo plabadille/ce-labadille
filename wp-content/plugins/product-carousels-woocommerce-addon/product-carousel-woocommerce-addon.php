@@ -17,9 +17,6 @@ Author URI: http://www.netattingo.com/
 */
 
 
-
-define('WP_DEBUG',true);
-
 define('WPC_DIR', plugin_dir_path(__FILE__));
 
 define('WPC_URL', plugin_dir_url(__FILE__));

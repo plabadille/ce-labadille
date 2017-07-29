@@ -133,7 +133,10 @@ class MLAObjects {
 			}
 
 			if ( isset ( $columns[ 'posts' ] ) ) {
-				unset( $columns[ 'posts' ] );
+				$wp_taxonomy = in_array( $taxonomy, array( 'category', 'post_tag' ) );
+				if ( ! ( $wp_taxonomy && ( 'checked' === MLACore::mla_get_option( MLACoreOptions::MLA_SHOW_COUNT_COLUMN ) ) ) ) {
+					unset( $columns[ 'posts' ] );
+				}
 			}
 
 			$columns[ 'attachments' ] = __( 'Attachments', 'media-library-assistant' );
@@ -235,7 +238,7 @@ class MLAObjects {
 
 			if ( is_wp_error( $term ) ) {
 				/* translators: 1: ERROR tag 2: taxonomy 3: error message */
-				error_log( sprintf( _x( '%1$s: mla_taxonomy_column_filter( "%2$s" ) - get_term failed: "%3$s"', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $taxonomy, $term->get_error_message() ), 0 );
+				MLACore::mla_debug_add( sprintf( _x( '%1$s: mla_taxonomy_column_filter( "%2$s" ) - get_term failed: "%3$s"', 'error_log', 'media-library-assistant' ), __( 'ERROR', 'media-library-assistant' ), $taxonomy, $term->get_error_message() ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 				return 0;
 			} elseif ($count_terms ) {
 				$column_text = number_format_i18n( 0 );

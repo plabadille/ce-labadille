@@ -1,10 +1,10 @@
 === Responsive Menu ===
-Contributors: ResponsiveMenu
+Contributors: ResponsiveMenu, peterfeatherstone
 Donate link: https://responsive.menu/donate
-Tags: responsive, menu, responsive menu, mobile menu, wordpress responsive menu, wp responsive menu, tablet menu, mobile, tablet, 3 lines, 3 line, three line, three lines
-Requires at least: 3.5.0
-Tested up to: 4.6
-Stable tag: 3.0.15
+Tags: responsive, menu, responsive menu, mobile menu, wordpress responsive menu, wp responsive menu, tablet menu, hamburger menu, hamburger, mobile, tablet, 3 lines, 3 line, three line, three lines
+Requires at least: 3.6
+Tested up to: 4.8
+Stable tag: 3.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,7 +35,7 @@ PHP 5.4+
 <br /><br />
 **Basic Functionality:**
 <ul>
-<li>Change every colour</li>
+<li>Change every text, background and border colour</li>
 <li>Set the fonts, font sizes and text alignment you want to use</li>
 <li>Set which side and where you want the button to show</li>
 <li>Set which side the menu appears from (left, right, top or bottom)</li>
@@ -91,15 +91,7 @@ Alternatively:
 
 == Frequently Asked Questions ==
 
-1. Why do I get the error `Parse error: syntax error, unexpected '[' in /home/..../wp-content/plugins/responsive-menu/src/app/Routing/WpRouting.php on line 19`?
-
-This is due to your PHP version not being high enough, you need at least PHP 5.4 for the plugin to work.
-
-2. I am getting a message similar to `Fatal error: Uncaught exception 'Exception' with message 'parse error: failed at $hamburger-layer-color: ;`, why?
-
-All you need to do is login to your WordPress admin, go to my plugin page and hit 'Update Options' to fix this.
-
-To view our whole FAQ, please go to https://responsive.menu/faq/
+To view our FAQ, please go to <a href="https://responsive.menu/faq">https://responsive.menu/faq</a>
 
 == Screenshots ==
 
@@ -118,6 +110,85 @@ To view our whole FAQ, please go to https://responsive.menu/faq/
 7. Fully customisable Admin Screen
 
 == Changelog ==
+
+= 3.1.5 (22nd July 2017) =
+* **Requires PHP 5.4**
+* Added ability to use description in menu items
+* Added option for button open title
+* Added ability to have the menu automatically opened on page load - Pro Only
+* Added ability to use keyboard shortcuts to close the menu - Pro Only
+* Added ability to use keyboard shortcuts to open the menu - Pro Only
+* Added ability to disable plugins FontAwesome and BootStrap scripts in case you want to load your own - Pro Only
+* Improve selection of menu items by menu item drop-down selection rather than by ID - Pro Only
+* Fixed bug with 3Dx animation and hover colours - Pro Only
+* Optimised twig imports to only include what is needed.
+
+= 3.1.4 (10th June 2017) =
+* **Requires PHP 5.4**
+* Added CSRF protection using nonces in admin
+* Updated wpdb method to use replace() instead of update() to protect from migration issues
+* Added selectize JS library
+* Allow custom trigger types for button - Pro Only
+* Fixed custom HTML icon bug - Pro Only
+
+= 3.1.3 (19th May 2017) =
+* **Requires PHP 5.4**
+* RTL improvements for admin UI
+* Added options to change the depth level values
+* Fixed twig deprecation notices - thanks to stodorovic for this
+* Fixed bug where having auto-height would break menu scrolling - Pro only
+
+= 3.1.2 (11th May 2017) =
+* **Requires PHP 5.4**
+* Updated badge counts
+* Updated Font Icon area text
+* Fixed bug with single menu breakpoint width - Pro Only
+* Fixed bug with empty Font Icons - Pro Only
+* Fixed bug with WP CLI
+
+= 3.1.1 (5th May 2017) =
+* **Requires PHP 5.4**
+* Added filter box in admin for options
+* Added menu container background colour option
+* Added hover line colour option
+* Added active line colour option
+* Added active button background colour option
+* Added migration scripts to make data upgrades smoother
+* Added option to choose custom Font Icons - Pro Only
+* Removed browser button outline and enabled focus/active states for better accessibility
+* Bug fixes
+
+= 3.1.0 (25th April 2017) =
+* **Requires PHP 5.4**
+* Massive overhaul of codebase
+* Speed improvements to front and back end
+* Admin now uses BootStrap
+* Twig templating engine implemented
+* Added admin form validation to help catch data errors
+* Added a rebuild database option
+* Done away with SASS on the fly compilation
+* Back to on slide effect now customisable - Pro only
+* Added option to adjust for WP Admin bar - Pro only
+* Bug fixes and compatibility fixes
+
+= 3.0.18 (2nd February 2017) =
+* **Requires PHP 5.4**
+* Improved border sizes for sub-menus
+* Improved "Back to" text on beta slider menu functionality
+
+= 3.0.17 (26th November 2016) =
+* **Requires PHP 5.4**
+* Fixed bug that stripped slashes from text inputs in admin screen
+* Fixed junk pixel residue left behind on screen on menu close issue
+* Fixed hiding of menu items in slide animation beta
+* Fixed "Back to %previous_category_name%" text check on slide animation beta
+* Bug fixes
+
+= 3.0.16 (21st October 2016) =
+* **Requires PHP 5.4**
+* Added functionality for admin to remember last saved tab
+* Improved local scope of self = this variable in JavaScript
+* Improved slide across animation option (Pro only)
 
 = 3.0.15 (11th October 2016) =
 * **Requires PHP 5.4**

@@ -4,9 +4,10 @@
       ed.addCommand('mcefmc_form_mce', function() {
         ed.windowManager.open({
           file : form_maker_admin_ajax_cfm,
-					width : 550 + ed.getLang('fmc_form_mce.delta_width', 0),
-					height : 300 + ed.getLang('fmc_form_mce.delta_height', 0),
-					inline : 1
+					width : 640 + ed.getLang('fmc_form_mce.delta_width', 0),
+					height : 385 + ed.getLang('fmc_form_mce.delta_height', 0),
+					inline : 1,
+          title : 'Form'
 				}, {
             fmc_plugin_url : url // Plugin absolute URL
 				});

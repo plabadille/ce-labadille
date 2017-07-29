@@ -1,9 +1,10 @@
 <?php
 defined('ABSPATH') or die("No script kiddies please!");
 global $wpdb;
-$si_id = sanitize_text_field($_GET['si_id']);
+$si_id = intval(sanitize_text_field($_GET['si_id']));
 $table_name = $table_name = $wpdb->prefix . "aps_social_icons";
 $icon_sets = $wpdb->get_results("SELECT * FROM $table_name where si_id = $si_id");
+if(!empty($icon_sets)){
 $icon_set = $icon_sets[0];
 $icon_extra = unserialize($icon_set->icon_extra);
 //$this->print_array($icon_extra);
@@ -13,7 +14,7 @@ $icon_extra = unserialize($icon_set->icon_extra);
         <div class="aps-message aps-message-success updated">
             <p>
                 <?php
-                echo __('Icon Set Updated Successfully','accesspress-social-icons');
+                _e('Icon Set Updated Successfully','accesspress-social-icons');
                 ?>
             </p>
         </div>
@@ -388,4 +389,8 @@ $icon_extra = unserialize($icon_set->icon_extra);
         </div>
     </div>
 </div>
-<?php include_once('promobar.php'); ?>
+<?php
+include_once('promobar.php');
+}else{
+    _e('No icon set found for this ID','accesspress-social-icons');
+}  ?>

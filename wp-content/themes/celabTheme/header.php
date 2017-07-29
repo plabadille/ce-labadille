@@ -16,7 +16,7 @@
     </head>
     <body>
     <?php
-    if ($_GET['page_id'] && $_GET['page_id'] == '212') #redirection automatique de la page mon compte
+    if (isset($_GET['page_id']) && $_GET['page_id'] == '212') #redirection automatique de la page mon compte
         header('Location: /');
     ?>
         <div id="page">

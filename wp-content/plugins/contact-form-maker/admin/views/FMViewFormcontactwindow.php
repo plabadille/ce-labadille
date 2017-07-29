@@ -29,58 +29,116 @@ class FMViewFormcontactwindow {
       <head>
         <title>Contact Form Maker</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
-        <script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
-        <script language="javascript" type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
-
         <?php
         wp_print_scripts('jquery');
+        wp_print_scripts('jquery-ui-tabs');
         ?>
-        <base target="_self">
-      </head>
-      <body id="link" onLoad="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';" dir="ltr" class="forceColors">
-        <div class="tabs" role="tablist" tabindex="-1">
-          <ul>
-            <li id="display_tab" class="current" role="tab" tabindex="0">
-              <span>
-                <a href="javascript:mcTabs.displayTab('display_tab','display_panel');" onMouseDown="return false;" tabindex="-1">Contact Form Maker</a>
-              </span>
-            </li>
-            <li id="submissions_tab" class="" role="tab" tabindex="0">
-              <span>
-                <a href="javascript:mcTabs.displayTab('submissions_tab','submissions_panel');" onMouseDown="return false;" tabindex="-1">Submissions</a>
-              </span>
-            </li>
-          </ul>
-        </div>
+        <link rel="stylesheet" href="<?php echo WD_FMC_URL; ?>/css/jquery-ui-1.12.1.css">
         <style>
-          .panel_wrapper {
-            height: 220px !important;
+          #WD-FormMaker {
+            margin-top: 0;
+            outline:none;
           }
-          .smaller_font {
-            font-size: 12px !important;
-            vertical-align: middle; 
-            text-align: left;
+          #WD-FormMaker #tabs {
+            display:none;
+            min-height: 335px;
           }
-          .smaller_font ul li {
-            display: flex !important;
+          #WD-FormMaker #tab-Submissions ul {
+            list-style-type: none;
           }
-          .smaller_font ul {
-            margin: 0 !important;
+          #WD-FormMaker .ui-widget-header {
+            border-bottom: 1px solid #dddddd;
+            background: transparent;
+            font-size: 12px;
+          }
+          #WD-FormMaker .ui-tabs .ui-tabs-panel {
+            font-size: 12px;
+            border: 1px solid #c5c5c5;
+            border-top:none;
+            margin-left: 3px;
+            margin-right: 2px;
+            height: 280px;
+          }
+          #WD-FormMaker .ui-widget-header {
+            border-style: none;
+            border-bottom: 1px solid #dddddd;
+            background: transparent;
+          }
+
+          #WD-FormMaker .ui-widget.ui-widget-content {
+            border-style: none;
+          }
+
+          #WD-FormMaker .ui-state-active,
+          #WD-FormMaker .ui-widget-content
+          #WD-FormMaker .ui-state-active,
+          #WD-FormMaker .ui-widget-header
+          #WD-FormMaker .ui-state-active{
+            border: 1px solid #c5c5c5;
+            border-bottom: none;
+            background: #f6f6f6;
+            outline:none
+          }
+
+          #WD-FormMaker .mceActionPanel #insert {
+            float: right;
+            outline:none;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 26px;
+            height: 28px;
+            margin: 5px 5px 0 0;
+            padding: 0 10px 1px;
+            cursor: pointer;
+            border-width: 1px;
+            border-style: solid;
+            -webkit-appearance: none;
+            -webkit-border-radius: 3px;
+            -webkit-box-sizing: border-box;
+            -webkit-box-shadow: 0 1px 0 #ccc;
+            box-shadow: 0 1px 0 #ccc;
+            border-radius: 3px;
+            white-space: nowrap;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            background: #0085ba;
+            border-color: #0073aa #006799 #006799;
+            -webkit-box-shadow: 0 1px 0 #006799;
+            box-shadow: 0 1px 0 #006799;
+            color: #fff;
+            text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+          }
+          #WD-FormMaker .ui-state-active a,
+          #WD-FormMaker .ui-state-active a:link,
+          #WD-FormMaker .ui-state-active a:visited {
+            background: #ffffff;
+            color: #000000;
+            outline:none
+          }
+          #WD-FormMaker table {
+            font-size:12px;
           }
         </style>
-        <div class="panel_wrapper" style="overflow: hidden;">
-          <div id="display_panel" class="panel current">
+        <base target="_self">
+      </head>
+      <body id="WD-FormMaker">
+        <div id="tabs">
+          <ul>
+            <li><a href="#tab-ContactFormMaker">Contact Form Maker</a></li>
+            <li><a href="#tab-Submissions">Submissions</a></li>
+          </ul>
+          <div id="tab-ContactFormMaker" class="panel">
             <table>
               <tr>
                 <td style="vertical-align: middle; text-align: left;">Select a Form</td>
                 <td style="vertical-align: middle; text-align: left;">
                   <select name="form_maker_id" id="form_maker_id" style="width: 230px; text-align: left;">
-                    <option value="- Select Form -" selected="selected">- Select a Form -</option>
+                    <option value="0" selected="selected">- Select a Form -</option>
                     <?php
                     foreach ($rows as $row) {
                       ?>
-                    <option value="<?php echo $row->id; ?>"><?php echo $row->title; ?></option>
+                      <option value="<?php echo $row->id; ?>"><?php echo $row->title; ?></option>
                       <?php
                     }
                     ?>
@@ -89,10 +147,9 @@ class FMViewFormcontactwindow {
               </tr>
             </table>
           </div>
-          <div id="submissions_panel" class="panel">
-            <div class="error" style="position: relative; padding: 5px; font-size: 20px; color: red; opacity: 1; font-weight: bolder;">Front end submissions are disabled in free version.</div>
-            <div style="position: absolute; background: gray; width: 92%; height: 65%; opacity: 0.3;">
-            </div>
+          <div id="tab-Submissions" class="panel">
+            <div class="error" style="position: relative; padding:0 5px 10px 5px; font-size: 15px; color: red; opacity: 1; font-weight: bolder;">Front end submissions are disabled in free version.</div>
+            <div style="position: absolute; background: gray; width: 93%; height: 74%; opacity: 0.3;"></div>
             <table>
               <tr>
                 <td class="smaller_font">Select a Form:</td>
@@ -102,7 +159,7 @@ class FMViewFormcontactwindow {
                     <?php
                     foreach ($rows as $row) {
                       ?>
-                    <option value="<?php echo $row->id; ?>"><?php echo $row->title; ?></option>
+                      <option value="<?php echo $row->id; ?>"><?php echo $row->title; ?></option>
                       <?php
                     }
                     ?>
@@ -114,20 +171,20 @@ class FMViewFormcontactwindow {
                 <td class="smaller_font">
                   <!--<label style="min-width:30px !important;">From:</label>-->
                   <input class="inputbox" type="text" name="startdate" id="startdate" size="10" maxlength="10" value="" />
-                  <input type="reset" style="width: 22px; border-radius: 3px !important;" class="button" value="..." onclick="return showCalendar('startdate','%Y-%m-%d');" />
+                  <input type="reset" style="width: 22px;" class="button" value="..." onclick="return showCalendar('startdate','%Y-%m-%d');" />
                   <label style="min-width:30px !important;">To:</label>
                   <input class="inputbox" type="text" name="enddate" id="enddate" size="10" maxlength="10" value="" />
-                  <input type="reset" style="width: 22px; border-radius: 3px !important;" class="button" value="..." onclick="return showCalendar('enddate','%Y-%m-%d');" />
+                  <input type="reset" style="width: 22px;" class="button" value="..." onclick="return showCalendar('enddate','%Y-%m-%d');" />
                 </td>
               </tr>
               <tr>
                 <td colspan="2">
-                  <table>
+                  <table style="width:100%">
                     <tr>
                       <td style="border-right: 1px solid black;">
                         <table>
                           <tr>
-                            <td class="smaller_font" style="vertical-align: top;">Select fields:</td>
+                            <td class="smaller_font" style="width:70px; vertical-align: top;">Select fields:</td>
                             <td class="smaller_font">
                               <ul>
                                 <li>
@@ -148,7 +205,7 @@ class FMViewFormcontactwindow {
                                 </li>
                                 <li>
                                   <input type="checkbox" checked="checked" id="form_fields" name="form_fields" value="form_fields">
-                                  <label for="form_fields">Form Fields</label>                                  
+                                  <label for="form_fields">Form Fields</label>
                                 </li>
                                 <li><label style="font-size: 10px; width: 160px;">You can hide specific form fields from Form General Options.</label></li>
                               </ul>
@@ -175,7 +232,7 @@ class FMViewFormcontactwindow {
                         <table>
                           <tr>
                             <td class="smaller_font" style="vertical-align: top;">Show:</td>
-                            <td class="smaller_font">
+                            <td class="smaller_font" style="width:240px;">
                               <ul>
                                 <li>
                                   <input type="checkbox" checked="checked" id="title" name="title" value="title">
@@ -222,14 +279,15 @@ class FMViewFormcontactwindow {
           </div>
         </div>
         <div class="mceActionPanel">
-          <div style="float: left;">
-            <input type="button" id="cancel" name="cancel" value="Cancel" onClick="tinyMCEPopup.close();"/>
-          </div>
-          <div style="float: right;">
-            <input type="submit" id="insert" name="insert" value="Insert" onClick="form_maker_insert_shortcode();"/>
-          </div>
+          <input type="submit" id="insert" name="insert" value="Insert" onClick="form_maker_insert_shortcode();"/>
         </div>
         <script type="text/javascript">
+          jQuery.noConflict();
+          jQuery(document).ready(function() {
+            jQuery('#tabs').tabs();
+            jQuery('#WD-FormMaker #tabs').show();
+          });
+
           var short_code = get_params("wd_contact_form");
           if (short_code) {
             if (!short_code['type']) {
@@ -238,7 +296,7 @@ class FMViewFormcontactwindow {
           }
           // Get shortcodes attributes.
           function get_params(module_name) {
-            var selected_text = tinyMCE.activeEditor.selection.getContent();
+            var selected_text = top.tinyMCE.activeEditor.selection.getContent();
             var module_start_index = selected_text.indexOf("[" + module_name);
             var module_end_index = selected_text.indexOf("]", module_start_index);
             var module_str = "";
@@ -259,18 +317,19 @@ class FMViewFormcontactwindow {
             }
             return short_code_attr;
           }
+
           function form_maker_insert_shortcode() {
-            if (document.getElementById('display_panel').className !== 'panel') {
-              if (document.getElementById('form_maker_id').value == '- Select Form -') {
-                tinyMCEPopup.close();
+            if (jQuery('#tabs .ui-tabs-panel[aria-hidden=false]').attr('id') == 'tab-ContactFormMaker') {
+              if (document.getElementById('form_maker_id').value == '0') {
+                top.tinyMCE.activeEditor.windowManager.close(window);
               }
               else {
                 var tagtext;
-              tagtext = '[wd_contact_form id="' + document.getElementById('form_maker_id').value + '"]';
-                window.tinyMCE.execCommand('mceInsertContent', false, tagtext);
-                tinyMCEPopup.close();
+                tagtext = '[wd_contact_form id="' + document.getElementById('form_maker_id').value + '"]';
+                top.tinyMCE.execCommand('mceInsertContent', false, tagtext);
+                top.tinyMCE.activeEditor.windowManager.close(window);
               }
-            }            
+            }
             else {
               alert("Front end submissions are disabled in free version.");
             }
