@@ -1,0 +1,16 @@
+[22-Aug-2016 13:23:41 UTC] PHP Parse error:  syntax error, unexpected 'get_header' (T_STRING) in /home/celab498/public_html/wp-content/themes/celabTheme/index.php on line 1
+[22-Aug-2016 13:23:53 UTC] PHP Parse error:  syntax error, unexpected 'get_header' (T_STRING) in /home/celab498/public_html/wp-content/themes/celabTheme/index.php on line 1
+[22-Aug-2016 13:50:29 UTC] PHP Fatal error:  Call to undefined function the_posts() in /home/celab498/public_html/wp-content/themes/celabTheme/index.php on line 6
+[22-Aug-2016 14:12:52 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/celab498/public_html/wp-content/themes/celabTheme/index.php on line 13
+[22-Aug-2016 14:30:02 UTC] PHP Fatal error:  Call to undefined function indlude() in /home/celab498/public_html/wp-content/themes/celabTheme/sidebar.php on line 3
+[22-Aug-2016 14:40:33 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/celab498/public_html/wp-content/themes/celabTheme/sidebar.php on line 6
+[22-Aug-2016 14:41:01 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/celab498/public_html/wp-content/themes/celabTheme/sidebar.php on line 6
+[26-Aug-2016 14:25:21 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'anim_theme' not found or invalid function name in /home/celab498/public_html/wp-includes/plugin.php on line 524
+[26-Aug-2016 14:27:39 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'anim_theme' not found or invalid function name in /home/celab498/public_html/wp-includes/plugin.php on line 524
+[26-Aug-2016 14:38:57 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'anim_theme' not found or invalid function name in /home/celab498/public_html/wp-includes/plugin.php on line 524
+[26-Aug-2016 14:42:53 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'anim_theme' not found or invalid function name in /home/celab498/public_html/wp-includes/plugin.php on line 524
+[26-Aug-2016 14:45:27 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'anim_theme' not found or invalid function name in /home/celab498/public_html/wp-includes/plugin.php on line 524
+[26-Aug-2016 14:45:54 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'anim_theme' not found or invalid function name in /home/celab498/public_html/wp-includes/plugin.php on line 524
+[07-Sep-2016 13:17:20 UTC] PHP Fatal error:  Call to undefined function get_content() in /home/celab498/public_html/wp-content/themes/celabTheme/page-25.php on line 6
+[07-Sep-2016 14:22:34 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/celab498/public_html/wp-content/themes/celabTheme/page-25.php on line 19
+[13-Sep-2016 14:18:56 UTC] PHP Parse error:  syntax error, unexpected 'ids' (T_STRING), expecting ']' in /home/celab498/public_html/wp-content/themes/celabTheme/page-15.php on line 18

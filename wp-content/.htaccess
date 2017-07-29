@@ -1,0 +1,2 @@
+# Redirection d'une page quelconque
+Redirect permanent /home/ https://www.ce-labadille.com/?page_id=2
