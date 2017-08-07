@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-26 08:55:55+0000\n"
+"PO-Revision-Date: 2017-08-07 11:20:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,35 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Yoast SEO - Stable (latest release)\n"
+
+#: admin/links/class-link-reindex-dashboard.php:140
+msgid "Calculation in progress..."
+msgstr "Calcul en cours&hellip;"
+
+#: admin/links/class-link-columns.php:159
+msgid "# internal links to"
+msgstr "# vers liens internes"
+
+#: admin/links/class-link-columns.php:159
+msgid "Number of internal links linking to this post. See \"Yoast Columns\" text in the help tab for more info."
+msgstr "Nombre de liens internes vers cet article. Voir le texte « Colonnes Yoast » dans l’onglet aide pour plus d’info."
+
+#: admin/links/class-link-columns.php:156
+msgid "# links in post"
+msgstr "# liens dans l’article"
+
+#: admin/links/class-link-columns.php:156
+msgid "Number of internal links in this post. See \"Yoast Columns\" text in the help tab for more info."
+msgstr "Nombre de liens internes dans cet article. Voir « Colonnes Yoast » dans l’onglet Aide pour plus d’info."
+
+#. translators: %s expands to Yoast
+#: admin/class-yoast-columns.php:26
+msgid "%s Columns"
+msgstr "Colonnes %s"
+
+#: admin/class-meta-columns.php:64 admin/taxonomy/class-taxonomy-columns.php:55
+msgid "Readability score"
+msgstr "Score de lisibilité"
 
 #: languages/yoast-seo-js.php:208
 msgid "The focus keyword appears only in %2$d (out of %1$d) subheadings in your copy. Try to use it in at least one more subheading."

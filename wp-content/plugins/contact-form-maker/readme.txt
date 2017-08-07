@@ -4,7 +4,7 @@ Donate link: http://web-dorado.com/products/wordpress-contact-form-maker-plugin.
 Tags:  contact, contact form, email, forms, contact forms, custom form, feedback, form builder, form manager, form maker, forms builder, form builder wordpress
 Requires at least: 3.4
 Tested up to: 4.8
-Stable tag: 1.8.43
+Stable tag: 1.11.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -157,6 +157,21 @@ If you want to update the plugin while preserving your existing contact forms, y
 8.  Contact Form Maker - Select Columns  
 
 == Changelog ==
+
+= 1.11.9 =
+*  Fixed: Bug on limitations   
+
+= 1.11.8 =
+*  Added: Overview page   
+*  Added: Form Header   
+*  Added: New Themes   
+*  Added: New Theme Editor   
+*  Added: Form Display Options (Embedded, Popup, Topbar, Scrollbox)   
+*  Removed: Featured Plugins, Featured Themes pages   
+*  Fixed: Google maps api conflict with other plugins.   
+*  Fixed: CSS conflict with some ajax themes   
+*  Fixed: Themes - bug on save as copy   
+*  Fixed: Security issues   
 
 = 1.8.43 =
 *  Fixed: Shortcode editor pop-up styles.   

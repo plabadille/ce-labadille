@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Meta Slider - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-20 18:33:45+0000\n"
+"PO-Revision-Date: 2017-08-04 19:37:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Meta Slider - Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "Team Updraft"
+msgstr "L’équipe Updraft"
 
 #: ml-slider.php:635
 msgid "Layer Slide"
@@ -39,8 +43,8 @@ msgid "https://www.metaslider.com"
 msgstr "https://www.metaslider.com"
 
 #: ml-slider.php:1996
-msgid "Upgrade to Pro $19"
-msgstr "Mise à niveau vers la version Pro à 19 $"
+msgid "Upgrade to Pro $39"
+msgstr "Passez à la version Pro pour 39 $"
 
 #: ml-slider.php:1972
 msgid "Go Pro"
