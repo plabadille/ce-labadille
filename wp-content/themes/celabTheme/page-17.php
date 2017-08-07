@@ -5,8 +5,9 @@
     <section id="content">
         <aside id="ariane">
             <?php
-            $parentPageUrl = get_permalink( end( get_ancestors( get_the_ID(), 'page' ) ) );
-            $parentPageTitle = get_the_title( end( get_ancestors( get_the_ID(), 'page' ) ) );
+            $tmp_ancestors = get_ancestors( get_the_ID(), 'page' );
+            $parentPageUrl = get_permalink( end( $tmp_ancestors ) );
+            $parentPageTitle = get_the_title( end( $tmp_ancestors ) );
             ?>
             <p><a href="<?php echo get_option('home'); ?>" alt="accueil">Home</a> » <a href="<?php echo $parentPageUrl; ?>" alt="<?php echo $parentPageTitle; ?>"><?php echo $parentPageTitle; ?></a> » <?php wp_title(); ?> </p>
         </aside>
