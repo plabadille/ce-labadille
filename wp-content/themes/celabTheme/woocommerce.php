@@ -17,13 +17,14 @@
             switch ($productSlug){
                 case "andco":
                     $exist = true;
-                    $parentUrl = get_permalink( get_post( '17' ) );
-                    $parentTitle = get_the_title( get_post( '17' ) );
+                    $parentUrl = get_permalink( get_page_by_path('shopping/la-guitare-a-givone',OBJECT,'page') );
+                    $parentTitle = get_the_title( get_page_by_path('shopping/la-guitare-a-givone',OBJECT,'page') );
                     break;
                 case "labadille":
                     $exist = true;
-                    $parentUrl = get_permalink( get_post( '15' ) );
-                    $parentTitle = get_the_title( get_post( '15' ) );
+                    var_dump(get_page_by_path('shopping'.$productSlug,OBJECT,'page'));
+                    $parentUrl = get_permalink( get_page_by_path('shopping'.$productSlug,OBJECT,'page') );
+                    $parentTitle = get_the_title( get_page_by_path('shopping'.$productSlug,OBJECT,'page') );
                     break;
                 default:
                     echo "Le fil d'ariane n'est pas encore paramétré pour cette catégorie, merci de prévenir un administrateur.";
@@ -31,8 +32,9 @@
             }
 
             if ($exist){
-                $boutiqueUrl = get_permalink( get_post( '1261' ) );
-                $boutiqueTitle = get_the_title( get_post( '1261' ) );
+
+                $boutiqueUrl = get_permalink( get_page_by_path('shopping',OBJECT,'page') );
+                $boutiqueTitle = get_the_title( get_page_by_path('shopping',OBJECT,'page') );
                 ?>
                 <aside id="ariane">
                     <p><a href="<?php echo get_option('home'); ?>" alt="accueil">Home</a> » <a href="<?php echo $boutiqueUrl ?>" alt="<?php echo $boutiqueTitle ?>"><?php echo $boutiqueTitle ?></a> » <a href="<?php echo $parentUrl ?>" alt="<?php echo $parentTitle ?>"><?php echo $parentTitle ?></a> » <?php wp_title(); ?> </p>
