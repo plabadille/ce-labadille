@@ -22,7 +22,6 @@
                     break;
                 case "labadille":
                     $exist = true;
-                    var_dump(get_page_by_path('shopping'.$productSlug,OBJECT,'page'));
                     $parentUrl = get_permalink( get_page_by_path('shopping'.$productSlug,OBJECT,'page') );
                     $parentTitle = get_the_title( get_page_by_path('shopping'.$productSlug,OBJECT,'page') );
                     break;
