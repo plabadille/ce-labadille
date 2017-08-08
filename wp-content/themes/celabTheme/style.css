@@ -441,6 +441,12 @@ body{
 /* ------------------------------------------------------------ */
 
 /* 5.1 contact form */
+#form1 {
+    display: block;
+    margin:  auto;
+    width: 50%;
+    min-width: 600px;
+}
 .form1 .wdform_page{
     text-align: center;
 }
@@ -458,12 +464,29 @@ body{
 .wdform_row:last-of-type .wdform-field:last-of-type{ /* position bouton du bas du formulaire */
     display: block;
 }
-.wdform_row:last-of-type .wdform-field:last-of-type .wdform-element-section{
+.wdform_row:last-of-type .wdform-field:last-of-type {
     display: block!important;
     margin: auto;
 }
+.fm-subscribe-reset .wdform-element-section {
+    display: flex!important;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.fm-subscribe-reset .wdform-element-section button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: black;
+    color: #798531;
+}
 
 @media screen and (max-device-width: 518px) {
+    #form1 {
+        width: 98%;
+        min-width: 510px;
+    }
     .form1 .wdform-page-and-images{
         padding-left: 0!important;
     }
