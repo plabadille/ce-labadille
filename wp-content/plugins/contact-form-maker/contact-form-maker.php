@@ -3,15 +3,18 @@
  * Plugin Name: Contact Form Maker
  * Plugin URI: http://web-dorado.com/products/form-maker-wordpress.html
  * Description: WordPress Contact Form Maker is a simple contact form builder, which allows the user with almost no knowledge of programming to create and edit different type of contact forms.
- * Version: 1.11.9
+ * Version: 1.11.15
  * Author: WebDorado Form Builder Team
- * Author URI: https://web-dorado.com/
+ * Author URI: https://web-dorado.com/wordpress-plugins-bundle.html
  * License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 define('WD_FMC_DIR', WP_PLUGIN_DIR . "/" . plugin_basename(dirname(__FILE__)));
 define('WD_FMC_URL', plugins_url(plugin_basename(dirname(__FILE__))));
 define('WD_FMC_MAIN_FILE', plugin_basename(__FILE__));
-define('WD_FMC_VERSION', '1.11.9');
+define('WD_FMC_VERSION', '1.11.15');
+define('WD_FMC_PREFIX', 'fmc');
+define('WD_FMC_NICENAME', __( 'Contact Form Maker', WD_FMC_PREFIX ));
+
 // Plugin menu.
 function form_maker_options_panel_fmc() {
   if (!get_option('form_maker_pro_active', FALSE)) {
@@ -211,7 +214,7 @@ add_shortcode('email_verification', 'fm_email_verification_shortcode_fmc');
 function fm_email_verification_shortcode_fmc() {
 	require_once(WD_FMC_DIR . '/framework/WDW_FM_Library.php');
 	require_once(WD_FMC_DIR . '/frontend/controllers/FMControllerVerify_email.php');
-  $controller_class = 'FMControllerVerify_email';
+  $controller_class = 'FMControllerVerify_email_fmc';
   $controller = new $controller_class();
   $controller->execute();
 }
@@ -355,7 +358,6 @@ function form_maker_manage_styles_fmc() {
   wp_enqueue_style('form_maker_layout', WD_FMC_URL . '/css/form_maker_layout.css', array(), WD_FMC_VERSION);
   wp_enqueue_style('fm-bootstrap', WD_FMC_URL . '/css/fm-bootstrap.css', array(), WD_FMC_VERSION);
   wp_enqueue_style('fm-colorpicker', WD_FMC_URL . '/css/spectrum.css', array(), WD_FMC_VERSION);
-  wp_enqueue_style('fm-font-awesome', WD_FMC_URL . '/css/frontend/font-awesome/font-awesome.css', array(), WD_FMC_VERSION);
 }
 
 // Form Maker manage page scripts.
@@ -512,8 +514,8 @@ function form_maker_front_end_scripts_fmc() {
 
   wp_register_style('fm-animate', WD_FMC_URL . '/css/frontend/fm-animate.css', array(), WD_FMC_VERSION);
   wp_enqueue_style('fm-animate');
-  wp_register_style('fm-font-awesome', WD_FMC_URL . '/css/frontend/font-awesome/font-awesome.css', array(), WD_FMC_VERSION);
-  wp_enqueue_style('fm-font-awesome');
+
+  wp_enqueue_style('dashicons');
 }
 // add_action('wp_enqueue_scripts', 'form_maker_front_end_scripts');
 
@@ -696,7 +698,7 @@ function cfm_overview() {
     global $cfm_options;
     $cfm_options = array(
       "prefix" => "cfm",
-      "wd_plugin_id" => 31,
+      "wd_plugin_id" => 183,
       "plugin_title" => "Contact Form Maker",
       "plugin_wordpress_slug" => "contact-form-maker",
       "plugin_dir" => WD_FMC_DIR,
@@ -791,3 +793,118 @@ function cfm_overview() {
   }
 }
 add_action('init', 'cfm_overview');
+
+/**
+ * Show notice to install backup plugin
+ */
+function fmc_bp_install_notice() {
+  // Remove old notice.
+  if ( get_option('wds_bk_notice_status') !== FALSE ) {
+    update_option('wds_bk_notice_status', '1', 'no');
+  }
+
+  // Show notice only on plugin pages.
+  if ( !isset($_GET['page']) || strpos(esc_html($_GET['page']), '_fmc') === FALSE ) {
+    return '';
+  }
+
+  $meta_value = get_option('wd_bk_notice_status');
+  if ( $meta_value === '' || $meta_value === FALSE ) {
+    ob_start();
+    $prefix = WD_FMC_PREFIX;
+    $nicename = WD_FMC_NICENAME;
+    $url = WD_FMC_URL;
+    $dismiss_url = add_query_arg(array( 'action' => 'wd_bp_dismiss' ), admin_url('admin-ajax.php'));
+    $install_url = esc_url(wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=backup-wd'), 'install-plugin_backup-wd'));
+    ?>
+    <div class="notice notice-info" id="wd_bp_notice_cont">
+      <p>
+        <img id="wd_bp_logo_notice" src="<?php echo $url . '/images/logo.png'; ?>" />
+        <?php echo sprintf(__("%s advises: Install brand new FREE %s plugin to keep your forms and website safe.", $prefix), $nicename, '<a href="https://wordpress.org/plugins/backup-wd/" title="' . __("More details", $prefix) . '" target="_blank">' .  __("Backup WD", $prefix) . '</a>'); ?>
+        <a class="button button-primary" href="<?php echo $install_url; ?>">
+          <span onclick="jQuery.post('<?php echo $dismiss_url; ?>');"><?php _e("Install", $prefix); ?></span>
+        </a>
+      </p>
+      <button type="button" class="wd_bp_notice_dissmiss notice-dismiss" onclick="jQuery('#wd_bp_notice_cont').hide(); jQuery.post('<?php echo $dismiss_url; ?>');"><span class="screen-reader-text"></span></button>
+    </div>
+    <style>
+      @media only screen and (max-width: 500px) {
+        body #wd_backup_logo {
+          max-width: 100%;
+        }
+        body #wd_bp_notice_cont p {
+          padding-right: 25px !important;
+        }
+      }
+      #wd_bp_logo_notice {
+        width: 40px;
+        float: left;
+        margin-right: 10px;
+      }
+      #wd_bp_notice_cont {
+        position: relative;
+      }
+      #wd_bp_notice_cont a {
+        margin: 0 5px;
+      }
+      #wd_bp_notice_cont .dashicons-dismiss:before {
+        content: "\f153";
+        background: 0 0;
+        color: #72777c;
+        display: block;
+        font: 400 16px/20px dashicons;
+        speak: none;
+        height: 20px;
+        text-align: center;
+        width: 20px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .wd_bp_notice_dissmiss {
+        margin-top: 5px;
+      }
+    </style>
+    <?php
+    echo ob_get_clean();
+  }
+}
+
+if ( !is_dir(plugin_dir_path(__DIR__) . 'backup-wd') ) {
+  add_action('admin_notices', 'fmc_bp_install_notice');
+}
+
+if ( !function_exists('wd_bps_install_notice_status') ) {
+  // Add usermeta to db.
+  function wd_bps_install_notice_status() {
+    update_option('wd_bk_notice_status', '1', 'no');
+  }
+  add_action('wp_ajax_wd_bp_dismiss', 'wd_bps_install_notice_status');
+}
+
+function fmc_add_plugin_meta_links($meta_fields, $file) {
+  if ( plugin_basename(__FILE__) == $file ) {
+    $plugin_url = "https://wordpress.org/support/plugin/contact-form-maker";
+    $prefix = WD_FMC_PREFIX;
+    $meta_fields[] = "<a href='" . $plugin_url . "' target='_blank'>" . __('Support Forum', $prefix) . "</a>";
+    $meta_fields[] = "<a href='" . $plugin_url . "/reviews#new-post' target='_blank' title='" . __('Rate', $prefix) . "'>
+            <i class='wdi-rate-stars'>"
+      . "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>"
+      . "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>"
+      . "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>"
+      . "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>"
+      . "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>"
+      . "</i></a>";
+
+    $stars_color = "#ffb900";
+
+    echo "<style>"
+      . ".wdi-rate-stars{display:inline-block;color:" . $stars_color . ";position:relative;top:3px;}"
+      . ".wdi-rate-stars svg{fill:" . $stars_color . ";}"
+      . ".wdi-rate-stars svg:hover{fill:" . $stars_color . "}"
+      . ".wdi-rate-stars svg:hover ~ svg{fill:none;}"
+      . "</style>";
+  }
+
+  return $meta_fields;
+}
+add_filter("plugin_row_meta", 'fmc_add_plugin_meta_links', 10, 2);

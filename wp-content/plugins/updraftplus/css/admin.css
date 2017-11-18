@@ -1,5 +1,3 @@
-/* General things used by many things */
-
 /* Widths and sizing */
 .max-width-600 {
 	max-width: 600px;
@@ -222,6 +220,10 @@ select {
 
 .form-table td.updraft_existingbackup_date {
 	padding-bottom: 5px;
+}
+
+span#updraft_lastlogcontainer {
+	word-break: break-all;
 }
 
 .stored_icon {
@@ -1706,6 +1708,27 @@ a.btn-get-started {
 
 div#updraft-wrap a {
 	cursor: pointer !important;
+}
+
+.updraftcentral_wizard_option {
+	width: 45%;
+	float: left;
+	text-align: center;
+}
+
+.updraftcentral_wizard_option label {
+	margin-bottom: 8px;
+}
+
+#updraftcentral_keys_table {
+	display: none;
+}
+
+.create_key_container {
+	border: 1px solid;
+	border-radius: 4px;
+	padding: 0 0 6px 6px;
+	margin-bottom: 8px;
 }
 
 @media screen and (min-width: 670px) {

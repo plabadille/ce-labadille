@@ -3,8 +3,8 @@ Contributors: webdorado
 Donate link: http://web-dorado.com/products/wordpress-contact-form-maker-plugin.html
 Tags:  contact, contact form, email, forms, contact forms, custom form, feedback, form builder, form manager, form maker, forms builder, form builder wordpress
 Requires at least: 3.4
-Tested up to: 4.8
-Stable tag: 1.11.9
+Tested up to: 4.9
+Stable tag: 1.11.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,7 @@ Contact Form by WD plugin is a simple contact form builder tool, which allows th
 == Description ==
 Create simple contact forms or complex applications forms with this FREE and intuitive WordPress plugin. No coding knowledge is required.   
   
+[Special Offer for all Premium Plugins](https://web-dorado.com/wordpress-plugins-bundle.html)   
 [WordPress Contact Form Maker](http://web-dorado.com/products/wordpress-contact-form-maker-plugin.html)   
  
 WordPress Contact Form Maker is a simple contact form creator, which allows the user with almost no knowledge of programming to create and edit different type of responsive forms. The product is similar to the WordPress Form Maker using most of its functionality, whereas there are also some differences. If want to build complicated contact forms with various field types like Date, Time, Single choice, Multiple choice, etc., than you can use [WordPress Form Builder](http://wordpress.org/extend/plugins/form-maker).  
@@ -158,8 +159,26 @@ If you want to update the plugin while preserving your existing contact forms, y
 
 == Changelog ==
 
+= 1.11.15 =
+*  Added: Support forum and Review links.
+
+= 1.11.14 =
+*  Changed: Removed Font Awesome.
+
+= 1.11.13 =
+*  Changed: Show notification to install Backup WD plugin only on plugin pages.
+
+= 1.11.12 =
+*  Added: Show notice to install Backup WD plugin.
+
+= 1.11.11 =
+*  Fixed: Conflict with Jetpack Contact Form module
+
+= 1.11.10 =
+*  Fixed: Bug on email verification
+
 = 1.11.9 =
-*  Fixed: Bug on limitations   
+*  Fixed: Bug on limitations
 
 = 1.11.8 =
 *  Added: Overview page   

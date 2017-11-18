@@ -346,8 +346,14 @@ function before_reset() {
 		  'post_type'   => 'fmemailverification',
 		);
 
-		if(!$mail_verification_post_id || get_post( $mail_verification_post_id )===NULL)
-			$mail_verification_post_id = wp_insert_post( $email_verification_post );
+		if(!$mail_verification_post_id || get_post( $mail_verification_post_id )===NULL) {
+      $mail_verification_post_id = wp_insert_post($email_verification_post);
+      $wpdb->update($wpdb->prefix . "formmaker", array(
+        'mail_verification_post_id' => $mail_verification_post_id,
+      ), array('id' => 1), array(
+        '%d',
+      ), array('%d'));
+    }
 	}
   $paypal_mode = $paypal_mode == 'paypal' ? 1 : 0;	
     $save = $wpdb->update($wpdb->prefix . 'formmaker', array(

@@ -3159,6 +3159,21 @@ $defaultStyles .="
         }
         else {
           $mail_verification_post_id = (int)$wpdb->get_var($wpdb->prepare('SELECT mail_verification_post_id FROM ' . $wpdb->prefix . 'formmaker WHERE id="%d"', $id));
+          if(!$mail_verification_post_id || get_post( $mail_verification_post_id ) === NULL) {
+            $email_verification_post = array(
+              'post_title'    => 'Email Verification',
+              'post_content'  => '[email_verification]',
+              'post_status'   => 'publish',
+              'post_author'   => 1,
+              'post_type'   => 'fmemailverification',
+            );
+            $mail_verification_post_id = wp_insert_post($email_verification_post);
+            $wpdb->update($wpdb->prefix . "formmaker", array(
+              'mail_verification_post_id' => $mail_verification_post_id,
+            ), array('id' => 1), array(
+              '%d',
+            ), array('%d'));
+          }
           $verification_link = get_post( $mail_verification_post_id );
           foreach($send_tos as $index => $send_to) {
             $recipient = isset($_POST['wdform_'.str_replace('*', '', $send_to)."_element".$id]) ? $_POST['wdform_'.str_replace('*', '', $send_to)."_element".$id] : NULL;

@@ -7,6 +7,7 @@ function get_responsive_menu_default_options() {
         'breakpoint' => 8000,
         'menu_to_hide' => '',
         'menu_depth' => 5,
+        'menu_depth_side' => 'left',
         'menu_depth_0' => 5,
         'menu_depth_1' => 10,
         'menu_depth_2' => 15,
@@ -159,6 +160,7 @@ function get_responsive_menu_default_options() {
         'menu_width_unit' => '%',
         'menu_close_on_link_click' => 'off',
         'menu_close_on_body_click' => 'off',
+        'enable_touch_gestures' => false,
         'menu_item_click_to_trigger_submenu' => 'off',
         'menu_disable_scrolling' => 'off',
         'menu_overlay' => 'off',
@@ -182,7 +184,12 @@ function get_responsive_menu_default_options() {
         'custom_walker' => null,
         'custom_css' => null,
 
-        'use_single_menu' => 'off',
+        'use_desktop_menu' => false,
+        'desktop_menu_options' => '{}',
+        'desktop_menu_positioning' => 'fixed',
+        'desktop_menu_width' => '',
+        'desktop_menu_width_unit' => 'px',
+        'desktop_menu_side' => '',
 
         'single_menu_height' => '80',
         'single_menu_height_unit' => 'px',
@@ -231,7 +238,10 @@ function get_responsive_menu_default_options() {
         'fade_submenus_speed' => 500,
 
         'use_slide_effect' => 'off',
-        'slide_effect_back_to_text' => 'Back'
+        'slide_effect_back_to_text' => 'Back',
+
+        'admin_theme' => 'dark'
+
     ];
 
 };

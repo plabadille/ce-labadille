@@ -667,7 +667,7 @@ class FMViewManage_fmc {
 				<input type="hidden" value="<?php echo WD_FMC_URL; ?>" id="form_plugins_url" />
 				<div id="main_editor" style="position: fixed; display: none; z-index: 140;">
 					<?php if (user_can_richedit()) {
-						wp_editor('', 'form_maker_editor', array('teeny' => FALSE, 'textarea_name' => 'form_maker_editor', 'media_buttons' => FALSE, 'textarea_rows' => 5));
+						wp_editor('', 'form_maker_editor', array('teeny' => TRUE, 'textarea_name' => 'form_maker_editor', 'media_buttons' => FALSE, 'textarea_rows' => 5));
 					}
 					else { ?>
 						<textarea name="form_maker_editor" id="form_maker_editor" cols="40" rows="5" style="width: 440px; height: 350px;" class="mce_editable" aria-hidden="true"></textarea>
@@ -739,7 +739,7 @@ class FMViewManage_fmc {
 							<label>Description: </label>
 							<div id="description_editor" style="width:470px; display: inline-block; vertical-align: middle;">
 								<?php if (user_can_richedit()) {
-									wp_editor($row->header_description, 'header_description', array('teeny' => FALSE, 'textarea_name' => 'header_description', 'media_buttons' => FALSE, 'textarea_rows' => 5));
+									wp_editor($row->header_description, 'header_description', array('teeny' => TRUE, 'textarea_name' => 'header_description', 'media_buttons' => FALSE, 'textarea_rows' => 5));
 								}
 								else { ?>
 									<textarea name="header_description" id="header_description" cols="40" rows="5" style="width: 440px; height: 350px;" class="mce_editable" aria-hidden="true"></textarea>
@@ -2166,7 +2166,7 @@ class FMViewManage_fmc {
 									</div>
 									<?php
 									if (user_can_richedit()) {
-										wp_editor($row->script_mail, 'script_mail', array('teeny' => FALSE, 'textarea_name' => 'script_mail', 'media_buttons' => FALSE, 'textarea_rows' => 5));
+										wp_editor($row->script_mail, 'script_mail', array('teeny' => TRUE, 'textarea_name' => 'script_mail', 'media_buttons' => FALSE, 'textarea_rows' => 5));
 									}
 									else {
 										?>
@@ -2385,7 +2385,7 @@ class FMViewManage_fmc {
 									</div>
 									<?php
 									if (user_can_richedit()) {
-										wp_editor($row->script_mail_user, 'script_mail_user', array('teeny' => FALSE, 'textarea_name' => 'script_mail_user', 'media_buttons' => FALSE, 'textarea_rows' => 5));
+										wp_editor($row->script_mail_user, 'script_mail_user', array('teeny' => TRUE, 'textarea_name' => 'script_mail_user', 'media_buttons' => FALSE, 'textarea_rows' => 5));
 									}
 									else {
 										?>
@@ -2505,7 +2505,7 @@ class FMViewManage_fmc {
 								<input style="border: 1px solid silver; font-size: 10px; margin: 3px;" type="button" value="User Email" onClick="insertAtCursor(<?php echo $choise; ?>,'useremail')" />
 								<?php
 								if (user_can_richedit()) {
-									wp_editor($row->submit_text, 'submit_text', array('teeny' => FALSE, 'textarea_name' => 'submit_text', 'media_buttons' => FALSE, 'textarea_rows' => 5));
+									wp_editor($row->submit_text, 'submit_text', array('teeny' => TRUE, 'textarea_name' => 'submit_text', 'media_buttons' => FALSE, 'textarea_rows' => 5));
 								}
 									else {
 										?>

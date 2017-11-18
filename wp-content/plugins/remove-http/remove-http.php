@@ -3,7 +3,7 @@
  * Plugin Name: Remove HTTP
  * Plugin URI: https://wordpress.org/plugins/remove-http/
  * Description: Removes both HTTP and HTTPS protocols from links.
- * Version: 2.1.0
+ * Version: 2.1.1
  * Author: Fact Maven
  * Author URI: https://www.factmaven.com/
  * License: GPLv3
@@ -94,7 +94,8 @@ class Fact_Maven_Remove_HTTP {
             # If the content-type is 'NULL' or 'text/html', apply rewrite
             if ( is_null( $content_type ) || substr( $content_type, 0, 9 ) === 'text/html' ) {
                 # Get domain without protocol                
-                $website = preg_replace( '/https?:\/\//', '', home_url() );
+                $website = preg_replace( '/^https?:\/\//', '', home_url() );
+                $website = preg_replace( '/\/.*$/', '', $website );
                 # Ignore input tags link tags with 'rel=canonical'
                 $exceptions = '<(?:input\b[^<]*\bvalue=[\"\']https?:\/\/|link\b[^<]*?\brel=[\'\"]canonical[\'\"][^<]*?>)(*SKIP)(*F)';
                 # If 'Ignore external links' is selected, only apply changes to internal links

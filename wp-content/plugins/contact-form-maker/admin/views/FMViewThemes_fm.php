@@ -3784,7 +3784,7 @@ You can use Custom CSS panel to edit form styling, or alternatively select a new
 															
 														</div>
 														<div class="fm-close-icon" ng-class="{borderRight : CBPBorderRight, borderLeft : CBPBorderLeft, borderBottom : CBPBorderBottom, borderTop : CBPBorderTop, borderHoverRight : CBHPBorderRight, borderHoverLeft : CBHPBorderLeft, borderHoverBottom : CBHPBorderBottom, borderHoverTop : CBHPBorderTop}">
-															<span class="fm-close fa fa-close" ng-class="{borderRight : CBPBorderRight, borderLeft : CBPBorderLeft, borderBottom : CBPBorderBottom, borderTop : CBPBorderTop, borderHoverRight : CBHPBorderRight, borderHoverLeft : CBHPBorderLeft, borderHoverBottom : CBHPBorderBottom, borderHoverTop : CBHPBorderTop}"></span>
+															<span class="fm-close dashicons dashicons-no" ng-class="{borderRight : CBPBorderRight, borderLeft : CBPBorderLeft, borderBottom : CBPBorderBottom, borderTop : CBPBorderTop, borderHoverRight : CBHPBorderRight, borderHoverLeft : CBHPBorderLeft, borderHoverBottom : CBHPBorderBottom, borderHoverTop : CBHPBorderTop}"></span>
 														</div>
 														<div class="fm-footer" ng-show="pagination != 'none'">
 															<div style="width: 100%;">
@@ -3792,13 +3792,13 @@ You can use Custom CSS panel to edit form styling, or alternatively select a new
 																	<div style="display: table-row-group;">
 																		<div  style="display: table-row;">
 																			<div  class="fm-previous-page" style="display: table-cell; width: 45%;">
-																				<div class="fm-wdform-page-button" ng-class="{borderRight : PBPBorderRight, borderLeft : PBPBorderLeft, borderBottom : PBPBorderBottom, borderTop : PBPBorderTop,  borderHoverRight : PBHPBorderRight, borderHoverLeft : PBHPBorderLeft, borderHoverBottom : PBHPBorderBottom, borderHoverTop : PBHPBorderTop}"><span class="fa fa-angle-double-left"></span> Previous</div>
+																				<div class="fm-wdform-page-button" ng-class="{borderRight : PBPBorderRight, borderLeft : PBPBorderLeft, borderBottom : PBPBorderBottom, borderTop : PBPBorderTop,  borderHoverRight : PBHPBorderRight, borderHoverLeft : PBHPBorderLeft, borderHoverBottom : PBHPBorderBottom, borderHoverTop : PBHPBorderTop}"><span class="dashicons dashicons-arrow-left-alt2"></span> Previous</div>
 																			</div>
 																			<div class="page-numbers text-center" style="display: table-cell;">
 																				<span>2/3</span>
 																			</div>
 																			<div class="fm-next-page" style="display: table-cell; width: 45%; text-align: right;">
-																				<div class="fm-wdform-page-button" ng-class="{borderRight : NBPBorderRight, borderLeft : NBPBorderLeft, borderBottom : NBPBorderBottom, borderTop : NBPBorderTop, borderHoverRight : NBHPBorderRight, borderHoverLeft : NBHPBorderLeft, borderHoverBottom : NBHPBorderBottom, borderHoverTop : NBHPBorderTop}">Next <span class="fa fa-angle-double-right"></span></div>
+																				<div class="fm-wdform-page-button" ng-class="{borderRight : NBPBorderRight, borderLeft : NBPBorderLeft, borderBottom : NBPBorderBottom, borderTop : NBPBorderTop, borderHoverRight : NBHPBorderRight, borderHoverLeft : NBHPBorderLeft, borderHoverBottom : NBHPBorderBottom, borderHoverTop : NBHPBorderTop}">Next <span class="dashicons dashicons-arrow-right-alt2"></span></div>
 																			</div>
 																		</div>
 																	</div>

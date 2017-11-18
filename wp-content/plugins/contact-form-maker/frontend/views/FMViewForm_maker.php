@@ -4638,7 +4638,7 @@ class FMViewForm_maker_fmc {
 						$fm_form .= '<div id="fm-topbar'.$id.'" class="fm-topbar" style="position: '.$fixed_relative.'; '.$top_bottom.': 0px; visibility:hidden;">'.$this->display($id, $form->type, $onload_js);
 						$fm_form .= '<div id="fm-action-buttons'.$id.'" class="fm-action-buttons">';
 						if($closing){
-							$fm_form .= '<span id="closing-form'.$id.'" class="closing-form fa fa-close" onclick="fm_hide_form('.$id.', '.$hide_duration.', function(){
+							$fm_form .= '<span id="closing-form'.$id.'" class="closing-form dashicons dashicons-no" onclick="fm_hide_form('.$id.', '.$hide_duration.', function(){
 								jQuery(\'#fm-topbar'.$id.'\').css(\'display\', \'none\');
 							})"></span>';
 						}
@@ -4718,10 +4718,10 @@ class FMViewForm_maker_fmc {
 						$fm_form .= '<div id="fm-scrollbox'.$id.'" class="fm-scrollbox '.$hide_mobile_class.'" style="'.$left_right.': 0px; visibility:hidden;"><div class="fm-scrollbox-form '.$left_right_class.'">'.$this->display($id, 'scrollbox', $onload_js);
 						$fm_form .= '<div id="fm-action-buttons'.$id.'" class="fm-action-buttons">';
 							if($minimize){
-								$fm_form .= '<span id="minimize-form'.$id.'" class="minimize-form fa fa-minus" onclick="minimize_form('.$id.')"></span>';
+								$fm_form .= '<span id="minimize-form'.$id.'" class="minimize-form dashicons dashicons-minus" onclick="minimize_form('.$id.')"></span>';
 							}
 							if($closing){
-								$fm_form .= '<span id="closing-form'.$id.'" class="closing-form fa fa-close" onclick="fm_hide_form('.$id.', '.$hide_duration.', function(){ jQuery(\'#fm-scrollbox'.$id.'\').removeClass(\'fm-show\').addClass(\'fm-hide\'); });"></span>';
+								$fm_form .= '<span id="closing-form'.$id.'" class="closing-form dashicons dashicons-no" onclick="fm_hide_form('.$id.', '.$hide_duration.', function(){ jQuery(\'#fm-scrollbox'.$id.'\').removeClass(\'fm-show\').addClass(\'fm-hide\'); });"></span>';
 							}
 						$fm_form .= '</div></div>';
 						$fm_form .= '</div></div>';
@@ -4801,7 +4801,7 @@ class FMViewForm_maker_fmc {
 
 						$fm_form .= '<div class="fm-popover-background" id="fm-popover-background'.$id.'" style="display:none;"></div><div id="fm-popover'.$id.'" class="fm-popover '.$hide_mobile_class.'" style="visibility:hidden;"><div class="fm-popover-container" id="fm-popover-container'.$id.'"><div class="fm-popover-inner-background" id="fm-popover-inner-background'.$id.'"></div><div class="fm-popover-content">'.$this->display($id, 'popover', $onload_js);
 						$fm_form .= '<div id="fm-action-buttons'.$id.'" class="fm-action-buttons">';
-						$fm_form .= '<span id="closing-form'.$id.'" class="closing-form fa fa-close" onclick="fm_hide_form('.$id.', '.$frequency.', function(){
+						$fm_form .= '<span id="closing-form'.$id.'" class="closing-form dashicons dashicons-no" onclick="fm_hide_form('.$id.', '.$frequency.', function(){
 							jQuery(\'#fm-popover-background'.$id.'\').css(\'display\', \'none\');
 							jQuery(\'#fm-popover'.$id.'\').css(\'display\', \'none\');
 						});"></span>';
