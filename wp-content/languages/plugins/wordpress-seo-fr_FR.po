@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-08-07 11:20:10+0000\n"
+"PO-Revision-Date: 2017-08-07 15:58:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,9 +11,62 @@ msgstr ""
 "Language: fr\n"
 "Project-Id-Version: Plugins - Yoast SEO - Stable (latest release)\n"
 
+#: admin/views/tabs/tool/import-seo.php:27
+msgid "Import from Jetpack SEO"
+msgstr "Importer depuis Jetpack SEO"
+
+#: admin/class-premium-upsell-admin-block.php:64
+msgid "Find out why you should upgrade to %s &raquo;"
+msgstr "Découvrez pourquoi vous devriez passer à %s »"
+
+#: admin/class-premium-upsell-admin-block.php:61
+msgid "Go premium!"
+msgstr "Passer à la version Premium"
+
+#: admin/links/class-link-reindex-dashboard.php:164
+msgid "Good job! All the links in your texts have been counted."
+msgstr "Bon travail ! Tous les liens dans vos textes ont été comptés."
+
+#: admin/links/class-link-reindex-dashboard.php:141
+msgid "Calculation completed."
+msgstr "Calcul terminé."
+
 #: admin/links/class-link-reindex-dashboard.php:140
 msgid "Calculation in progress..."
 msgstr "Calcul en cours&hellip;"
+
+#: admin/links/class-link-reindex-dashboard.php:117
+msgid "Stop counting"
+msgstr "Arrêter le comptage"
+
+#: admin/links/class-link-reindex-dashboard.php:110
+msgid "Counting links in your texts"
+msgstr "Comptage les liens dans vos textes"
+
+#. translators: 1: expands to a <span> containing the number of items
+#. recalculated. 2: expands to a <strong> containing the total number of items.
+#: admin/links/class-link-reindex-dashboard.php:100
+msgid "Text %1$s of %2$s processed."
+msgstr "%1$s texte sur %2$s fait."
+
+#: admin/links/class-link-reindex-dashboard.php:93
+msgid "All your texts are already counted, there is no need to count them again."
+msgstr "Tous vos textes sont déjà comptés, ce n’est pas nécessaire de les compter à nouveau."
+
+#: admin/links/class-link-reindex-dashboard.php:68
+msgid "Count links in your texts"
+msgstr "Compter les liens dans vos textes"
+
+#. translators: 1: link to yoast.com post about internal linking suggestion. 4:
+#. is Yoast.com 3: is anchor closing.
+#: admin/links/class-link-reindex-dashboard.php:52
+msgid "The links in all your public texts need to be counted. This will provide insights of which texts need more links to them. If you want to know more about the why and how of internal linking, check out %1$sthe article about internal linking on %2$s%3$s."
+msgstr "Les liens dans tous vos textes publics doivent être comptés. Cela fournira des informations sur les textes qui nécessiteraient d’avoir plus de liens vers eux. Si vous souhaitez en savoir plus sur la façon d’utiliser les liens internes, consultez %1$s à propos des liens internes sur %2$s%3$s."
+
+#: admin/links/class-link-reindex-dashboard.php:49
+#: admin/views/tabs/dashboard/features.php:51
+msgid "Text link counter"
+msgstr "Compteur de lien textuel"
 
 #: admin/links/class-link-columns.php:159
 msgid "# internal links to"
@@ -261,6 +314,10 @@ msgstr "Passez à la version Premium et nos experts seront là pour répondre à
 msgid "24/7 support"
 msgstr "Support 24/7"
 
+#: admin/class-premium-upsell-admin-block.php:47
+msgid "Superfast internal linking suggestions"
+msgstr "Suggestions de liens internes super-rapides"
+
 #. translators: %1$s expands to a 'Yoast SEO Premium' text linked to the
 #. yoast.com website.
 #: admin/metabox/class-metabox-add-keyword-tab.php:33
@@ -387,7 +444,7 @@ msgstr "Si vous voulez de l’aide pour créer du contenu exceptionnel, consulte
 msgid "Scroll to see the table content."
 msgstr "Faire défiler pour voir le contenu du tableau."
 
-#: admin/banner/class-admin-banner-sidebar.php:362
+#: admin/banner/class-admin-banner-sidebar.php:352
 msgid "Take the online Technical SEO Training course and learn essential technical SEO-concepts!"
 msgstr "Suivez le cours en ligne de technique SEO et découvrez les concepts techniques essentiels au SEO !"
 
@@ -655,7 +712,7 @@ msgstr "Utilisez JavaScript à la place."
 msgid "Select redirect"
 msgstr "Sélectionner la redirection"
 
-#: admin/banner/class-admin-banner-sidebar.php:352
+#: admin/banner/class-admin-banner-sidebar.php:342
 msgid "Take the online Site Structure Training course and learn how to structure your website!"
 msgstr "Suivez le cours « Site Structure » et apprenez comment organiser votre site Web !"
 
@@ -784,6 +841,18 @@ msgstr "Le texte ne contient aucun sous-titre. Essayez d’en ajouter au moins u
 #: languages/yoast-seo-js.php:38
 msgid "None of the paragraphs are too long, which is great."
 msgstr "Aucun des paragraphes n’est trop long, c’est parfait."
+
+#: languages/yoast-seo-js.php:202
+msgid "The SEO title is wider than the viewable limit."
+msgstr "Le titre SEO est plus grand que la limite lisible."
+
+#: languages/yoast-seo-js.php:199
+msgid "The SEO title has a nice length."
+msgstr "Le titre SEO a une bonne longueur."
+
+#: languages/yoast-seo-js.php:196
+msgid "The SEO title is too short. Use the space to add keyword variations or create compelling call-to-action copy."
+msgstr "Le titre de la page est trop court. Utilisez l’espace pour ajouter des variations du mot-clé ou pour créer un appel à l’action plus attractif."
 
 #: languages/yoast-seo-js.php:179
 msgid "The length of the meta description is sufficient."
@@ -999,10 +1068,6 @@ msgstr "Laissez nos experts configurer votre extension %1$s !"
 msgid "Do you want to know how to improve your rankings? %1$sLet team %2$s help you!%3$s"
 msgstr "Voulez-vous apprendre comment améliorer vos classements dans les moteurs de recherche ? %1$sLaissez l’équipe %2$s vous aider !%3$s"
 
-#: admin/banner/class-admin-banner-sidebar.php:342
-msgid "Take the online Keyword Research Training course and learn how to rank with your keywords!"
-msgstr "Suivez le cours en ligne de recherche de mots-clés et apprenez à vous placez avec vos mots-clés !"
-
 #: admin/banner/class-admin-banner-sidebar.php:290
 msgid "Courses"
 msgstr "Cours"
@@ -1081,14 +1146,10 @@ msgstr "La barre de menu d’administration de %1$s contient des liens utiles ve
 msgid "Admin bar menu"
 msgstr "Menu de la barre d’administration"
 
-#. translators: %1$s expands to OnPage.org
+#. translators: %1$s expands to Ryte.
 #: admin/views/tabs/dashboard/features.php:32
 msgid "The %1$s integration checks daily if your site is still indexable by search engines and notifies you when this is not the case."
 msgstr "L’intégration de %1$s vérifie quotidiennement si votre site est toujours indexable par les moteurs de recherche et vous avertit lorsque ce n’est plus le cas."
-
-#: admin/views/tabs/dashboard/features.php:29
-msgid "OnPage.org"
-msgstr "OnPage.org"
 
 #: admin/views/tabs/dashboard/features.php:26
 msgid "The advanced settings include site-wide settings for your titles and meta descriptions, social metadata, sitemaps and much more."
@@ -1392,7 +1453,7 @@ msgstr "Équipe et contributeurs"
 #. translators: %s expands to the current taxonomy index value
 #: admin/taxonomy/class-taxonomy-settings-fields.php:82
 msgid "Default for this taxonomy type, currently: %s"
-msgstr "Valeur par défaut pour ce type de taxinomie, actuellement : %s"
+msgstr "Valeur par défaut pour ce type de taxonomie, actuellement : %s"
 
 #. translators: %1$s expands to Yoast SEO extensions
 #: admin/pages/licenses.php:179
@@ -1612,7 +1673,7 @@ msgstr "Réglages sitemap des utilisateurs"
 
 #: admin/views/tabs/sitemaps/taxonomies.php:12
 msgid "Taxonomies sitemap settings"
-msgstr "Réglages sitemap des taxinomies"
+msgstr "Réglages sitemap des taxonomies"
 
 #: admin/views/tabs/sitemaps/post-types.php:12
 msgid "Post types sitemap settings"
@@ -2195,11 +2256,6 @@ msgstr "Activé"
 msgid "Disabled"
 msgstr "Désactivé"
 
-#. translators: %s expands to Yoast SEO.
-#: admin/views/dashboard-widget.php:86
-msgid "%s has not fetched your site's indexability status yet from OnPage.org"
-msgstr "%s n’a pas encore récupéré l’état d’indexabilité depuis OnPage.org"
-
 #. translators: %s: wp_title() function
 #: inc/class-wpseo-replace-vars.php:1116
 msgid "The separator defined in your theme's %s tag."
@@ -2223,25 +2279,19 @@ msgstr "Supprimer les variables %s."
 msgid "Strip the category base (usually %s) from the category URL."
 msgstr "Retire la base de la catégorie (généralement %s) de l&rsquo;URL de la catégorie."
 
-#: admin/views/dashboard-widget.php:100
+#: admin/views/dashboard-widget.php:102
 msgid "Analyze entire site"
 msgstr "Analyser le site en entier"
 
-#: admin/views/dashboard-widget.php:97
+#: admin/views/dashboard-widget.php:99
 msgid "Fetch the current status"
 msgstr "Récupérer l’état actuel"
-
-#. translators: %1$s opens a link to a related knowledge base article, %2$s
-#. expands to Yoast SEO, %3$s closes the link.
-#: admin/views/dashboard-widget.php:76
-msgid "%1$s%2$s has not been able to fetch your site's indexability status%3$s from OnPage.org"
-msgstr "%1$s%2$s n’a pas pu récupérer l’état d’indexabilité%3$s depuis onPage.org."
 
 #: admin/views/dashboard-widget.php:60
 msgid "Your homepage can be indexed by search engines."
 msgstr "Votre page d’accueil peut être indexée par les moteurs de recherche."
 
-#. translators: 1: expands to OnPage.org
+#. translators: %1$s expands to Ryte.
 #: admin/views/dashboard-widget.php:47
 msgid "Indexability check by %1$s"
 msgstr "Indexibilité vérifiée par %1$s"
@@ -2263,11 +2313,13 @@ msgstr "Si vous ne voulez pas utiliser la méta description pour le partage de l
 #. translators: %1$s expands to the social network name
 #: admin/taxonomy/class-taxonomy-social-fields.php:46
 msgid "If you don't want to use the title for sharing on %1$s but instead want another title there, write it here."
-msgstr "Si vous ne souhaitez pas utiliser le titre de l&rsquo;article pour le partager sur %1$s, mais que vous souhaitez un autre titre, écrivez-le ici."
+msgstr "Si vous ne souhaitez pas utiliser le titre de l’article pour le partager sur %1$s, mais que vous souhaitez un autre titre, écrivez-le ici."
 
 #. translators: 1: opens a link to a related knowledge base article. 2: closes
 #. the link
-#: admin/onpage/class-onpage.php:116 admin/views/dashboard-widget.php:67
+#. translators: %1$s: opens a link to a related knowledge base article. %2$s:
+#. closes the link.
+#: admin/onpage/class-onpage.php:117 admin/views/dashboard-widget.php:67
 msgid "%1$sYour homepage cannot be indexed by search engines%2$s. This is very bad for SEO and should be fixed."
 msgstr "%1$sVotre page d’accueil ne peut pas être indexée par les moteurs de recherche%2$s. C’est très mauvais pour le SEO et doit être résolu."
 
@@ -2324,7 +2376,7 @@ msgid "%1$s of %2$s done."
 msgstr "%1$s de %2$s effectué."
 
 #. translators: %s expands to the actual filter/action that has been used.
-#: admin/class-admin-init.php:509
+#: admin/class-admin-init.php:511
 msgid "%s filter/action"
 msgstr "%s filtre/action"
 
@@ -2644,11 +2696,11 @@ msgstr "%1$s n’est pas un choix valide pour ceux qui devraient être autorisé
 
 #: inc/options/class-wpseo-option-internallinks.php:204
 msgid "Please select a valid post type for taxonomy \"%s\""
-msgstr "Veuillez choisir un type de contenu valide pour la taxinomie « %s »"
+msgstr "Veuillez choisir un type de contenu valide pour la taxonomie « %s »"
 
 #: inc/options/class-wpseo-option-internallinks.php:165
 msgid "Please select a valid taxonomy for post type \"%s\""
-msgstr "Veuillez choisir une taxinomie valide pour le type de contenu « %s »"
+msgstr "Veuillez choisir une taxonomie valide pour le type de contenu « %s »"
 
 #: inc/options/class-wpseo-option-internallinks.php:71
 msgid "You searched for"
@@ -2677,7 +2729,7 @@ msgstr "Bon"
 
 #: inc/class-wpseo-replace-vars.php:1147
 msgid "Replaced with a custom taxonomies description"
-msgstr "Remplacé par une description des taxinomies personnalisées."
+msgstr "Remplacé par une description des taxonomies personnalisées."
 
 #: inc/class-wpseo-replace-vars.php:1146
 msgid "Replaced with a posts custom taxonomies, comma separated."
@@ -2829,13 +2881,13 @@ msgstr "Une variable de remplacement portant le même nom est déjà enregistré
 
 #: inc/class-wpseo-replace-vars.php:109
 msgid "A replacement variable can not start with \"%%cf_\" or \"%%ct_\" as these are reserved for the WPSEO standard variable variables for custom fields and custom taxonomies. Try making your variable name unique."
-msgstr "Une variable de remplacement ne peut commencer par \"%%cf_\" ou \"%%ct_\" car ces préfixes sont réservés aux variables standards de WPSEO pour les champs et les taxinomies personnalisés. Essayez d’utiliser un nom de variable unique."
+msgstr "Une variable de remplacement ne peut commencer par \"%%cf_\" ou \"%%ct_\" car ces préfixes sont réservés aux variables standards de WPSEO pour les champs et les taxonomies personnalisés. Essayez d’utiliser un nom de variable unique."
 
 #: inc/class-wpseo-replace-vars.php:106
 msgid "A replacement variable can only contain alphanumeric characters, an underscore or a dash. Try renaming your variable."
 msgstr "Une variable de remplacement ne peut contenir que des caractères alpha-numériques, un souligné ou un tiret. Veuillez renommer votre variable"
 
-#: frontend/class-frontend.php:1243
+#: frontend/class-frontend.php:1252
 msgid "Admin only notice: this page doesn't show a meta description because it doesn't have one, either write it for this page specifically or go into the SEO -> Titles menu and set up a template."
 msgstr "Avis pour l’administrateur&nbsp;: cette page n’affiche pas de méta description car elle n’en a pas. Vous pouvez donc soit l’ajouter spécifiquement pour cette page soit vous rendre dans vos réglages (SEO -> Titres) pour configurer un modèle."
 
@@ -2879,6 +2931,18 @@ msgstr "Réglages de %1$s"
 msgid "Delete the old data after import? (recommended)"
 msgstr "Supprimer les anciennes données après l’importation ? (recommandé)"
 
+#: admin/views/tabs/tool/import-seo.php:28
+msgid "Import from WooThemes SEO framework"
+msgstr "Importer depuis le framework WooThemes SEO"
+
+#: admin/views/tabs/tool/import-seo.php:26
+msgid "Import from All-in-One SEO"
+msgstr "Importer depuis All-In-One SEO"
+
+#: admin/views/tabs/tool/import-seo.php:25
+msgid "Import from HeadSpace2"
+msgstr "Importer depuis HeadSpace2"
+
 #. translators: 1: link open tag; 2: link close tag.
 #: admin/views/tabs/tool/import-seo.php:17
 msgid "If you've used another SEO plugin, try the %1$sSEO Data Transporter%2$s plugin to move your data into this plugin, it rocks!"
@@ -2895,7 +2959,7 @@ msgstr "Exporter vos réglages de %1$s"
 
 #: admin/views/tabs/tool/wpseo-export.php:23
 msgid "Include Taxonomy Metadata"
-msgstr "Inclure les métadonnées des taxinomies."
+msgstr "Inclure les métadonnées des taxonomies."
 
 #. translators: %1$s expands to Yoast SEO
 #: admin/views/tabs/tool/wpseo-export.php:17
@@ -3103,11 +3167,11 @@ msgstr "Blog"
 
 #: admin/views/tabs/advanced/breadcrumbs.php:62
 msgid "Post type archive to show in breadcrumbs for taxonomies"
-msgstr "Type de contenu d&rsquo;archive à afficher dans le fil d&rsquo;Ariane pour les taxinomies"
+msgstr "Type de contenu d’archive à afficher dans le fil d’Ariane pour les taxonomies"
 
 #: admin/views/tabs/advanced/breadcrumbs.php:43
 msgid "Taxonomy to show in breadcrumbs for post types"
-msgstr "Taxinomie à afficher dans le fil d’Ariane pour les types de contenu"
+msgstr "Taxonomie à afficher dans le fil d’Ariane pour les types de contenu"
 
 #: admin/views/tabs/advanced/breadcrumbs.php:27
 msgid "Breadcrumb for 404 Page"
@@ -3596,7 +3660,7 @@ msgstr "Forcer la réécriture des titres"
 
 #: admin/pages/metas.php:23 admin/pages/xml-sitemaps.php:40
 msgid "Taxonomies"
-msgstr "Taxinomies"
+msgstr "Taxonomies"
 
 #: admin/pages/metas.php:22 admin/pages/xml-sitemaps.php:38
 msgid "Post Types"
@@ -3960,11 +4024,11 @@ msgid "Upload Image"
 msgstr "Mettre en ligne une image"
 
 #. translators: %1$s expands to Yoast SEO Premium
-#: admin/banner/class-admin-banner-sidebar.php:393
+#: admin/banner/class-admin-banner-sidebar.php:383
 msgid "Upgrade to %1$s &raquo;"
 msgstr "Passer à %1$s &raquo;"
 
-#: admin/banner/class-admin-banner-sidebar.php:387
+#: admin/banner/class-admin-banner-sidebar.php:377
 msgid "Remove these ads?"
 msgstr "Supprimer les publicités"
 
@@ -4003,11 +4067,11 @@ msgstr "Inclure dans le sitemap ?"
 
 #: admin/taxonomy/class-taxonomy-settings-fields.php:45
 msgid "This taxonomy follows the indexation rules set under Metas and Titles, you can override it here."
-msgstr "Cette taxinomie suit les règles d’indexation définies dans les Métas et Titres, vous pouvez les remplacer ici."
+msgstr "Cette taxonomie suit les règles d’indexation définies dans les Métas et Titres, vous pouvez les remplacer ici."
 
 #: admin/taxonomy/class-taxonomy-settings-fields.php:57
 msgid "The Breadcrumbs Title is used in the breadcrumbs where this taxonomy appears."
-msgstr "Le titre est utilisé dans les fils d’Ariane où cette taxinomie apparait."
+msgstr "Le titre est utilisé dans les fils d’Ariane où cette taxonomie apparait."
 
 #: admin/views/tabs/metas/post-types.php:72
 msgid "Breadcrumbs title"
@@ -4333,6 +4397,10 @@ msgstr "Le titre SEO de la page contient le mot-clé, mais il ne semble pas appa
 msgid "The SEO title contains the focus keyword, at the beginning which is considered to improve rankings."
 msgstr "Le titre SEO de la page contient le mot-clé au début ce qui devrait permettre d’améliorer votre classement."
 
+#: languages/yoast-seo-js.php:205
+msgid "Please create an SEO title."
+msgstr "Veuillez créer un titre SEO."
+
 #: languages/yoast-seo-js.php:284
 msgid "The slug for this page is a bit long, consider shortening it."
 msgstr "L’identifiant de cette page est un peu trop long, il serait préférable de le raccourcir."
@@ -4564,11 +4632,11 @@ msgstr "Les données de HeadSpace2 ont bien été importées."
 
 #: admin/class-export.php:184
 msgid "No taxonomy metadata found"
-msgstr "Aucune métadonnée de taxinomie n’a été trouvée."
+msgstr "Aucune métadonnée de taxonomie n’a été trouvée."
 
 #: admin/class-export.php:115
 msgid "This export includes taxonomy metadata"
-msgstr "Cet export inclut les métadonnées des taxinomies."
+msgstr "Cet export inclut les métadonnées des taxonomies."
 
 #. translators: %1$s expands to Yoast SEO
 #: admin/class-export.php:113

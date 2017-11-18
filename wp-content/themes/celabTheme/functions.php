@@ -30,7 +30,7 @@ remove_filter('the_content', 'wptexturize');
 
 //on nettoie le menu d'admin pour une utilisation client
 function remove_menu_pages() {
-    remove_menu_page('tools.php'); //outils
+#    remove_menu_page('tools.php'); //outils
     remove_menu_page('users.php'); //utilisateurs
     remove_menu_page('themes.php'); //apparence
     remove_menu_page('edit-comments.php'); // commentaires

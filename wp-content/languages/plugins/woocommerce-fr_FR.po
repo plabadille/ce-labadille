@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-07-12 07:41:19+0000\n"
+"PO-Revision-Date: 2017-08-07 09:30:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -217,7 +217,7 @@ msgstr "Activer les notes sur les avis"
 
 #: includes/admin/settings/class-wc-settings-products.php:490
 msgid "Reviews can only be left by \"verified owners\""
-msgstr "Permettre les avis uniquement aux «nbsp;acheteurs certifiés&nbsp;»"
+msgstr "Permettre les avis uniquement aux « acheteurs certifiés »"
 
 #: includes/admin/settings/class-wc-settings-products.php:471
 msgid "Enable product reviews"
@@ -9125,7 +9125,7 @@ msgstr "Avis (%d)"
 #: templates/checkout/form-shipping.php:63
 #: templates/single-product/tabs/additional-information.php:25
 msgid "Additional information"
-msgstr "Information complémentaire"
+msgstr "Informations complémentaires"
 
 #: includes/wc-template-functions.php:836
 msgid "Sort by price: high to low"
