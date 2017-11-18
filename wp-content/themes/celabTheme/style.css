@@ -67,9 +67,11 @@ body{
         display: flex;
         flex-direction: row;
         align-items: center;
+	justify-content: space-between;
+	min-height: 110px;
     }
         #slogan{
-            padding: 70px 0 20px 100px;
+            padding-left: 30px;
         }
             h1{
                 font-size: xx-large;
@@ -77,22 +79,11 @@ body{
             }
             #slogan p{
                 color: grey;
+		font-size: 1em;
             }
-    @media screen and (max-device-width: 930px) {
-        #slogan{
-            padding: 20px 100px 10px 5%;
-        }
-            h1{
-                font-size: 1.7em;
-            }
-            #slogan p{
-                font-size: 1em;
-            }
-    }
-        #subName{
-            visibility: hidden;
-            padding: 70px 0 20px 200px;
-        }
+	#subName{
+	   visibility: hidden;
+	}
             #subName h2{
                 font-size: xx-large;
                 font-weight: bolder;
@@ -100,19 +91,48 @@ body{
             }
             #subName p{
                 color: grey;
-            }
-    @media screen and (max-device-width: 930px) {
-        #subName{
-            padding: 20px 0 10px 10%;
-        }
-            #subName h2{
-                font-size: x-large;
-            }
+            }	   
+	#subSubName{
+		visibility: hidden;
+		padding-right: 30px;
+	}
+	    #subSubName p{
+		color: grey;
+	    }
+    
+    @media screen and (max-device-width: 1100px) {
+	#sloganAlign{
+	    justify-content: left;
+	}
+	#subName{
+	    padding-left: 30px;
+	}
+	#subSubName{
+	    display: none;
+	}
     }
-    @media screen and (max-device-width: 518px) {
-        #subName{
+
+    @media screen and (max-device-width: 780px) {
+        #slogan{
+	    padding-left: 15px;
+	}
+	#subName{
             display: none;
         }
+    }
+    @media screen and (max-device-width: 518px) {
+	#sloganAlign{
+	    min-height: 80px;
+	}
+	#slogan{
+	    margin-right: 100px;
+	}
+	    #slogan h1{
+		font-size: x-large;	    
+	    }
+	    #slogan p{
+		font-size: 0.9em;
+	    }
     }
     #slide{
         background-color: black;
@@ -254,7 +274,7 @@ body{
                     }
 @media screen and (max-device-width: 750px) {
     #content{
-        width: 100%;
+        width: 98%;
         padding: 15px 1%;
     }
     #sidebar{

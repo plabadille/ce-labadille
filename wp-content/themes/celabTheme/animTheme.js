@@ -27,5 +27,7 @@ clean(document);
 window.onload=function(){
     setTimeout(function(){
         document.querySelector("#subName").style.visibility ="visible";
-    }, 5000);
+    }, 1000);
+    setTimeout(function(){
+	document.querySelector("#subSubName").style.visibility ="visible";}, 2000);
 };

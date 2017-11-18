@@ -30,14 +30,20 @@
                         <h2>Trio larigot</h2>
                         <p>Chanson swing</p>
                     </div>
+		    <div id="subSubName">
+			<p>Charles-Erick Labadille</p>
+			<p>Daniel Givone</p>
+			<p>Jean-Claude Givone</p>
+			<p>Odile Labadille</p>
 	            </div>
-	            <div id="slide">
+		</div>
+	        <div id="slide">
                     <?php
                         if (is_front_page()) {
                             echo do_shortcode("[metaslider id=11]");
                          } 
                     ?>
-	            </div>
+	        </div>
             </header>
             <nav id="nav" role="navigation">
                 <div id="normalRez">
