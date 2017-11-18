@@ -22,8 +22,8 @@
                     break;
                 case "labadille":
                     $exist = true;
-                    $parentUrl = get_permalink( get_page_by_path('shopping'.$productSlug,OBJECT,'page') );
-                    $parentTitle = get_the_title( get_page_by_path('shopping'.$productSlug,OBJECT,'page') );
+                    $parentUrl = get_permalink( get_page_by_path('shopping/labadille',OBJECT,'page') );
+                    $parentTitle = get_the_title( get_page_by_path('shopping/labadille',OBJECT,'page') );
                     break;
                 default:
                     echo "Le fil d'ariane n'est pas encore paramétré pour cette catégorie, merci de prévenir un administrateur.";
