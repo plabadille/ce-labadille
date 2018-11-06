@@ -1,4 +1,4 @@
-<?php /* TemplateName: And Co */ ?>
+<?php /* TemplateName: La guitare à Givone */ ?>
 
 <?php get_header(); ?> <!-- ouvrir header.php -->
 <main id="main">
@@ -22,7 +22,7 @@
                 </article> <?php
             }
         }
-        echo do_shortcode('[product_category category="andco" orderby="title" per_page=-1]');
+        echo do_shortcode('[product_category category="la-guitare-a-givone" orderby="title" per_page=-1]');
         ?>
     </section>
     <?php get_sidebar(); ?>

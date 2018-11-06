@@ -15,16 +15,21 @@
             $exist = false;
 
             switch ($productSlug){
-                case "andco":
+                case "les-editions-de-linconnu":
                     $exist = true;
+                    $parentUrl = get_permalink( get_page_by_path('shopping/les-editions-de-linconnu',OBJECT,'page') );
+                    $parentTitle = get_the_title( get_page_by_path('shopping/les-editions-de-linconnu',OBJECT,'page') );
+                    break;
+                case "les-autres-editeurs":
+                    $exist = true;
+                    $parentUrl = get_permalink( get_page_by_path('shopping/dautres-livres-de-labadille',OBJECT,'page') );
+                    $parentTitle = get_the_title( get_page_by_path('shopping/dautres-livres-de-labadille',OBJECT,'page') );
+                    break;
+			   case "la-guitare-a-givone":
+				   $exist = true;
                     $parentUrl = get_permalink( get_page_by_path('shopping/la-guitare-a-givone',OBJECT,'page') );
                     $parentTitle = get_the_title( get_page_by_path('shopping/la-guitare-a-givone',OBJECT,'page') );
-                    break;
-                case "labadille":
-                    $exist = true;
-                    $parentUrl = get_permalink( get_page_by_path('shopping/labadille',OBJECT,'page') );
-                    $parentTitle = get_the_title( get_page_by_path('shopping/labadille',OBJECT,'page') );
-                    break;
+				   break;
                 default:
                     echo "Le fil d'ariane n'est pas encore paramétré pour cette catégorie, merci de prévenir un administrateur.";
                     break;

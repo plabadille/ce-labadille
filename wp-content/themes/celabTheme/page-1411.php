@@ -1,4 +1,4 @@
-<?php /* TemplateName: Labadille */ ?>
+<?php /* TemplateName: D'autres livres de CE Labadille */ ?>
 
 <?php get_header(); ?> <!-- ouvrir header.php -->
 <main id="main">
@@ -22,7 +22,7 @@
                 </article> <?php
             }
         }
-        echo do_shortcode('[product_category category="les-editions-de-linconnu" orderby="title" per_page =-1 ]');
+        echo do_shortcode('[product_category category="les-autres-editeurs" orderby="title" per_page =-1 ]');
         ?>
     </section>
     <?php get_sidebar(); ?>
